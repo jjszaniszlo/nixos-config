@@ -8,12 +8,21 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # lanzaboote
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -21,9 +30,12 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/configuration.nix];
+        modules = [
+          lanzaboote.nixosModules.lanzaboote
+          ./nixos/configuration.nix
+        ];
       };
     };
 

@@ -33,8 +33,16 @@
   };  
 
   # bootloader
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # add extra kernal modules
+  boot.kernelModules = [ "kvm-amd" "nct6775" "k10temp" ];
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
 
   # networking
   networking.networkmanager.enable = true;
@@ -88,6 +96,16 @@
   programs.steam.enable = true;
   programs.coolercontrol.enable = true;
 
+  systemd.services.lact = {
+    description = "AMDGPU Control Daemon";
+    after = ["multi-user.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.lact}/bin/lact daemon";
+    };
+    enable = true;
+  };
+
   # packages
   environment.systemPackages = with pkgs; [
     vim
@@ -101,6 +119,9 @@
     git
     wl-clipboard
     lazygit
+    sbctl
+    vivaldi
+    bitwarden-desktop
 
     # hyprland companion packages
     eww
@@ -109,7 +130,7 @@
     rofi-wayland    
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "desktop";
 
   users.users = {
     jjszaniszlo = {
