@@ -2,14 +2,25 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
+  outputs,
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
+
+    inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs pkgs-unstable; };
+    users = {
+      jjszaniszlo = import ../home/home.nix;
+    };
+  };
 
   nixpkgs = {
     overlays = [];
@@ -108,20 +119,20 @@
 
   # packages
   environment.systemPackages = with pkgs; [
-    vim
-    neovim
     wget
     lutris
     discord
     xivlauncher
     wezterm
     lact
-    git
     wl-clipboard
     lazygit
     sbctl
     vivaldi
     bitwarden-desktop
+    git
+    neovim
+    home-manager
 
     # hyprland companion packages
     eww
