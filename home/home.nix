@@ -42,7 +42,6 @@
     vivaldi
     bitwarden-desktop
     git
-    neovim
 
     # hyprland companion packages
     eww

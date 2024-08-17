@@ -3,8 +3,8 @@ let
   startup-script = pkgs.pkgs.writeShellScriptBin "start" '''';
 in
 {
-  wayland.windowManager.hyprland = {
-    settings = {
+	wayland.windowManager.hyprland = {
+		settings = {
 			monitor = [
 				"DP-1,3840x2160@120,0x0,1"
 				"DP-3,2560x1440@165,3840x0,1,transform,3"
@@ -15,34 +15,34 @@ in
 				"eww open & hyprpaper"
 				''${startup-script}/bin/start''
 			];
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-      ];
+			env = [
+				"XCURSOR_SIZE,24"
+				"HYPRCURSOR_SIZE,24"
+			];
       general = {
-        gaps_in = 5;
+				gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
 				resize_on_border = false;
 				allow_tearing = false;
-				layout = dwindle;
-      };
+				layout = "dwindle";
+			};
 			decoration = {
     		rounding = 10;
-    		active_opacity = 1.0;
-    		inactive_opacity = 1.0;
+				active_opacity = 1.0;
+				inactive_opacity = 1.0;
 
-    		drop_shadow = true;
-    		shadow_range = 4;
-    		shadow_render_power = 3;
-    		"col.shadow" = "rgba(1a1a1aee)";
+				drop_shadow = true;
+				shadow_range = 4;
+				shadow_render_power = 3;
+				"col.shadow" = "rgba(1a1a1aee)";
 
-    		blur = {
-        	enabled = true;
-        	size = 3;
-        	passes = 1; 
-        	vibrancy = 0.1696;
-    		};
+				blur = {
+					enabled = true;
+					size = 3;
+					passes = 1; 
+					vibrancy = 0.1696;
+				};
 			};
 			animations =  {
 				enabled = true;
@@ -126,11 +126,12 @@ in
 			  "$mainMod, mouse_up, workspace, e-1"
 				", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
 				", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-    ];
-		bindm = [
-			"$mainMod, mouse:272, movewindow"
-			"$mainMod, mouse:273, resizewindow"
-		];
-		windowrulev2 = "suppressevent maximize, class:.*";
+    	];
+			bindm = [
+				"$mainMod, mouse:272, movewindow"
+				"$mainMod, mouse:273, resizewindow"
+			];
+			windowrulev2 = "suppressevent maximize, class:.*";
+		};
   };
 }
