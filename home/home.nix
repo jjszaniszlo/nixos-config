@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./nvim.nix
+    ./hyprland.nix
   ];
 
   nixpkgs = {
@@ -26,6 +27,29 @@
 
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+  # Install programs
+  programs.firefox.enable = true;
+
+  home.packages = with pkgs; [
+    wget
+    lutris
+    discord
+    xivlauncher
+    wezterm
+    wl-clipboard
+    lazygit
+    vivaldi
+    bitwarden-desktop
+    git
+    neovim
+
+    # hyprland companion packages
+    eww
+    dunst
+    swww
+    rofi-wayland    
+  ];
 
   systemd.user.startServices = "sd-switch";
 

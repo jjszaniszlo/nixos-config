@@ -11,16 +11,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-
-    inputs.home-manager.nixosModules.home-manager
   ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs pkgs-unstable; };
-    users = {
-      jjszaniszlo = import ../home/home.nix;
-    };
-  };
 
   nixpkgs = {
     overlays = [];
@@ -97,15 +88,13 @@
   # enable polkit
   security.polkit.enable = true;
 
-  # Install programs
+  # install programs
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
-
-  programs.firefox.enable = true;
-  programs.steam.enable = true;
   programs.coolercontrol.enable = true;
+  programs.steam.enable = true;
 
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
@@ -119,26 +108,9 @@
 
   # packages
   environment.systemPackages = with pkgs; [
-    wget
-    lutris
-    discord
-    xivlauncher
-    wezterm
-    lact
-    wl-clipboard
-    lazygit
     sbctl
-    vivaldi
-    bitwarden-desktop
-    git
-    neovim
+    lact
     home-manager
-
-    # hyprland companion packages
-    eww
-    dunst
-    swww
-    rofi-wayland    
   ];
 
   networking.hostName = "desktop";

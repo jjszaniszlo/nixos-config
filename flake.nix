@@ -49,7 +49,7 @@
       "jjszaniszlo@desktop" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {inherit inputs outputs pkgs-unstable;};
-        modules = [./home-manager/home.nix];
+        modules = [./home/home.nix];
       };
     };
   };
