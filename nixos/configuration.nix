@@ -41,6 +41,17 @@
   # add extra kernal modules
   boot.kernelModules = [ "kvm-amd" "nct6775" "k10temp" ];
 
+  hardware.graphics.enable = true;
+
+  # enable vulkan
+  hardware.graphics.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  # For 32 bit applications 
+  hardware.graphics.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
