@@ -3,17 +3,11 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # lanzaboote
     lanzaboote = {
@@ -27,20 +21,19 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     home-manager,
     lanzaboote,
+    nixvim,
     ...
   } @ inputs: let
     inherit (self) outputs;
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs pkgs-unstable;};
+        specialArgs = {inherit inputs outputs;};
         modules = [
           lanzaboote.nixosModules.lanzaboote
           ./nixos/configuration.nix
@@ -53,8 +46,10 @@
     homeConfigurations = {
       "jjszaniszlo@desktop" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit inputs outputs pkgs-unstable;};
-        modules = [./home/home.nix];
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home/home.nix
+        ];
       };
     };
   };
