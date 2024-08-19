@@ -16,4 +16,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("core.options")
-require("core.mappings)
+
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  checker = { enabled = false },
+})
+
+require("core.maps")

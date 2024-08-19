@@ -9,6 +9,16 @@ let
     };
   };
 
+  lazy-nix-helper = pkgs.vimUtils.buildVimPlugin {
+    name = "lazy-nix-helper";
+    src = pkgs.fetchFromGitHub {
+      owner = "b-src";
+      repo = "lazy-nix-helper.nvim";
+      rev = "63b20ed071647bb492ed3256fbda709e4bfedc45";
+      hash = "sha256-TBDZGj0NXkWvJZJ5ngEqbhovf6RPm9N+Rmphz92CS3Q=";
+    };
+  };
+
   treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
     p.bash
     p.comment
@@ -37,12 +47,16 @@ in
     nixd
   ];
 
-  programs.neovim = {
+  programs.neovim = with pkgs.vimPlugins; {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    plugins = [
+      kanagawa-nvim
+      lazy-nix-helper
+    ];
   };
 
   home.file."./.config/nvim/" = {
