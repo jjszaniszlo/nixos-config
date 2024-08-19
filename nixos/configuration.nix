@@ -10,7 +10,6 @@
   ...
 }: {
   imports = [
-    nixvim.homeManagerModules.nixvim
     ./hardware-configuration.nix
   ];
 

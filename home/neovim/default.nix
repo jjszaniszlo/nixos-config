@@ -8,13 +8,18 @@ let
       ref = ref;
     };
   };
+
+  nixvim = import (builtins.fetchGit {
+    url = "https://github.com/nix-community/nixvim";
+    ref = "nixos-24.05";
+  });
 in
 {
-  programs.neovim = with pkgs.vimPlugins; {
+  imports = [
+    nixvim.homeManagerModules.nixvim
+  ];
+
+  programs.nixvim = {
     enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
   };
 }

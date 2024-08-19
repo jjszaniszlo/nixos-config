@@ -10,10 +10,6 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nix vim
-    nixvim.url = "github:nix-community/nixvim-24.05";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
     # lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
