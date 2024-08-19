@@ -8,7 +8,7 @@
   ...
 }: {
   imports = [
-    ./nvim.nix
+    ./neovim
     ./hyprland.nix
   ];
 
