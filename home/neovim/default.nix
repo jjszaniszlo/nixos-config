@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ...}:
+{ pkgs, lib, config, inputs, ...}:
 let
   fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
     pname = "${lib.strings.sanitizeDerivationName repo}";
@@ -8,18 +8,17 @@ let
       ref = ref;
     };
   };
-
-  nixvim = import (builtins.fetchGit {
-    url = "https://github.com/nix-community/nixvim";
-    ref = "nixos-24.05";
-  });
+  options = import ./config/options.nix;
 in
 {
-  imports = [
-    nixvim.homeManagerModules.nixvim
+  imports = [ 
+    inputs.nixvim.homeManagerModules.nixvim
   ];
-
+  
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
+    vimdiffAlias = true;
+    inherit options;
   };
 }
