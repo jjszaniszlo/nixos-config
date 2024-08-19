@@ -45,6 +45,11 @@ in
     vimdiffAlias = true;
   };
 
+  home.file."./.config/nvim/" = {
+    source = ./nvim;
+    recursive = true;
+  };
+
   home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
     recursive = true;
     source = treesitterWithGrammars;
