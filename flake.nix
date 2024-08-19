@@ -23,7 +23,6 @@
     nixpkgs,
     home-manager,
     lanzaboote,
-    nixvim,
     ...
   } @ inputs: let
     inherit (self) outputs;
