@@ -1,21 +1,19 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
-  inputs,
   lib,
-  config,
   pkgs,
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
-
+    ../common/global/nix.nix
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix
     ../common/services/lanzaboote.nix
     ../common/services/pipewire.nix
     ../common/programs/steam.nix
     ../common/users/jjszaniszlo
+    ./hardware-configuration.nix
   ];
 
   nixpkgs = {
@@ -24,20 +22,6 @@
       allowUnfree = true;
     };
   };
-
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      experimental-features = "nix-command flakes";
-      flake-registry = "";
-      nix-path = config.nix.nixPath;
-    };
-    channel.enable = false;
-
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };  
 
   # bootloader
   boot.loader.systemd-boot.enable = lib.mkForce false;
