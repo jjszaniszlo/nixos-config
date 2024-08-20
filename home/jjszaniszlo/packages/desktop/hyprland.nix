@@ -9,7 +9,7 @@ in
 			monitor = map (
         m: "${m.name},${toString m.width}x${toString m.height}@${toString m.refresh-rate},${m.position},1${
           if m.transform.enable
-          then ",transform,${m.transform.value}"
+          then ",transform,${toString m.transform.value}"
           else ""
         }"
       ) (config.monitors);

@@ -45,7 +45,7 @@ in {
             type = types.attrs;
             default = {
               enable = false;
-              value = "";
+              value = 0;
             };
           };
         };

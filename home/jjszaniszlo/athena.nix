@@ -44,14 +44,14 @@
       primary = true;
     }
     {
-      name = "DP-2";
+      name = "DP-3";
       width = 2560;
       height = 1440;
       refresh-rate = 165;
       position = "auto-right";
       transform = {
         enable = true;
-        value = "3";
+        value = 3;
       };
       workspace = "2";
     }
