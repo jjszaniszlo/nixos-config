@@ -8,6 +8,7 @@
     ./global
     ./packages/desktop/hyprland.nix
     ./packages/gaming
+    ./packages/programs/wezterm.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # Install programs
@@ -18,7 +19,6 @@
     lutris
     discord
     xivlauncher
-    wezterm
     wl-clipboard
     lazygit
     vivaldi
