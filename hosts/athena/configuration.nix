@@ -2,11 +2,9 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
-  outputs,
   lib,
   config,
   pkgs,
-  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -113,7 +111,7 @@
     home-manager
   ];
 
-  networking.hostName = "desktop";
+  networking.hostName = "athena";
 
   users.users = {
     jjszaniszlo = {

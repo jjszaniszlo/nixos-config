@@ -9,7 +9,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim.url = "github:jjszaniszlo/nixvim-config"
+    nixvim.url = "github:jjszaniszlo/nixvim-config";
 
     # lanzaboote
     lanzaboote = {
@@ -33,11 +33,11 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
+      athena = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           lanzaboote.nixosModules.lanzaboote
-          ./nixos/configuration.nix
+          ./hosts/athena/configuration.nix
         ];
       };
     };
@@ -45,11 +45,11 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "jjszaniszlo@desktop" = home-manager.lib.homeManagerConfiguration {
+      "jjszaniszlo@athena" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home/home.nix
+          ./home/jjszaniszlo/athena.nix
         ];
       };
     };
