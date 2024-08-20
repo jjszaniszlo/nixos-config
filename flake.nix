@@ -30,6 +30,8 @@
     inherit (self) outputs;
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
+    homeManagerModules = import ./modules/home-manager;
+
     nixosConfigurations = {
       athena = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
