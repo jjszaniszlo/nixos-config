@@ -12,8 +12,8 @@ _: {
     ../common/services/systemd-boot.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
-  ];
- 
+  ]; 
+
   networking = {
     hostName = "athena";
     networkmanager.enable = true;

@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./global
-    ./hyprland.nix
+    ./packages/desktop/hyprland.nix
     ./packages/gaming
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 

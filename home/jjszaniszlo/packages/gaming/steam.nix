@@ -6,6 +6,7 @@ let
       xorg.libXi
       xorg.libXinerama
       xorg.libXScrnSaver
+      xorg.libxcb
       libpng
       libpulseaudio
       libvorbis

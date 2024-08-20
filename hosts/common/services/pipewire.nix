@@ -1,5 +1,6 @@
 {
   hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.support32Bit = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
