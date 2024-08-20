@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, config, ...}:
 let
 	startup-script = pkgs.pkgs.writeShellScriptBin "start" '''';
 in
@@ -6,10 +6,14 @@ in
 	wayland.windowManager.hyprland = {
 		enable = true;
 		settings = {
-			monitor = [
-				"DP-1,3840x2160@120,0x0,1"
-				"DP-3,2560x1440@165,3840x0,1,transform,3"
-			];
+			monitor = map (
+        m: "${m.name},${toString m.width}x${toString m.height}@${toString m.refresh-rate},${m.position},1${
+          if m.transform.enable
+          then ",transform,${m.transform.value}"
+          else ""
+        }"
+      ) (config.monitors);
+
 			"$terminal" = "wezterm";
 			"$menu" = "rofi -show drun -show-icons";
 			exec-once = [
