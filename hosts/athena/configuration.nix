@@ -9,6 +9,12 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+
+    ../common/services/coolercontrol.nix
+    ../common/services/lact.nix
+    ../common/services/lanzaboote.nix
+    ../common/services/pipewire.nix
+    ../common/programs/steam.nix
     ../common/users/jjszaniszlo
   ];
 
@@ -37,14 +43,6 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # add extra kernal modules
-  boot.kernelModules = [ "kvm-amd" "nct6775" "k10temp" ];
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
-
   # networking
   networking.networkmanager.enable = true;
 
@@ -69,48 +67,18 @@
   # printing
   services.printing.enable = true;
   
-  # sound
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
   # xdg portal
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # # enable polkit
-  # security.polkit.enable = true;
-  #
-  # # install programs
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
+  # enable polkit
+  security.polkit.enable = true;
 
-  programs.coolercontrol.enable = true;
-  programs.steam.enable = true;
-
-  systemd.services.lact = {
-    description = "AMDGPU Control Daemon";
-    after = ["multi-user.target"];
-    wantedBy = ["multi-user.target"];
-    serviceConfig = {
-      ExecStart = "${pkgs.lact}/bin/lact daemon";
-    };
+  # install programs
+  programs.hyprland = {
     enable = true;
+    xwayland.enable = true;
   };
-
-  # packages
-  environment.systemPackages = with pkgs; [
-    sbctl
-    lact
-  ];
 
   networking.hostName = "athena";
 

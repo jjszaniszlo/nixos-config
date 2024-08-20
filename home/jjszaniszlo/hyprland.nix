@@ -1,19 +1,10 @@
-{ pkgs, lib, ...}:
+{ pkgs, ...}:
 let
 	startup-script = pkgs.pkgs.writeShellScriptBin "start" '''';
 in
 {
 	wayland.windowManager.hyprland = {
 		enable = true;
-    package = pkgs.hyprland.override { wrapRuntimeDeps = false; };
-    systemd = {
-      enable = true;
-      extraCommands = lib.mkBefore [
-        "systemctl --user stop graphical-session.target"
-        "systemctl --user start hyprland-session.target"
-      ];
-    };
-
 		settings = {
 			monitor = [
 				"DP-1,3840x2160@120,0x0,1"
