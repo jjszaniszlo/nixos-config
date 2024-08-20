@@ -40,6 +40,7 @@
     bitwarden-desktop
     git
     inputs.nixvim.packages.x86_64-linux.default
+    ripgrep
 
     # hyprland companion packages
     eww

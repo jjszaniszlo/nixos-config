@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ../common/users/jjszaniszlo
   ];
 
   nixpkgs = {
@@ -83,14 +84,15 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # enable polkit
-  security.polkit.enable = true;
+  # # enable polkit
+  # security.polkit.enable = true;
+  #
+  # # install programs
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
 
-  # install programs
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
   programs.coolercontrol.enable = true;
   programs.steam.enable = true;
 
@@ -108,18 +110,9 @@
   environment.systemPackages = with pkgs; [
     sbctl
     lact
-    home-manager
   ];
 
   networking.hostName = "athena";
-
-  users.users = {
-    jjszaniszlo = {
-      isNormalUser = true;
-      description = "John Szaniszlo";
-      extraGroups = ["networkmanager" "wheel"];
-    };
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";

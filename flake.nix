@@ -30,8 +30,6 @@
     inherit (self) outputs;
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       athena = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
@@ -42,8 +40,6 @@
       };
     };
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "jjszaniszlo@athena" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
