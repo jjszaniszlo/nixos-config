@@ -9,7 +9,12 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Nixvim
     nixvim.url = "github:jjszaniszlo/nixvim-config";
+
+    # nix-darwin
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # lanzaboote
     lanzaboote = {
@@ -23,12 +28,14 @@
   outputs = {
     self,
     nixpkgs,
+    nix-darwin,
     home-manager,
     lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    pkgs-darwin = nixpkgs.legacyPackages.aarch64-darwin;
   in {
     homeManagerModules = import ./modules/home-manager;
 
@@ -49,6 +56,21 @@
         modules = [
           ./home/jjszaniszlo/athena.nix
         ];
+      };
+      "jjszaniszlo@poseidon" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs-darwin;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home/jjszaniszlo/poseidon.nix
+        ];
+      };
+    };
+
+    darwinConfigurations = {
+      "jjszaniszlo@poseidon" = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./hosts/poseidon/configuration.nix
+          ];
       };
     };
   };
