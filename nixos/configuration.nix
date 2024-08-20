@@ -6,6 +6,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -38,7 +39,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # add extra kernal modules
-  boot.kernelModules = [ "kvm-amd" "amdgpu" "nct6775" "k10temp" ];
+  boot.kernelModules = [ "kvm-amd" "nct6775" "k10temp" ];
 
   boot.lanzaboote = {
     enable = true;

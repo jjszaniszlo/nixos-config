@@ -41,6 +41,7 @@
     vivaldi
     bitwarden-desktop
     git
+    inputs.nixvim.packages.x86_64-linux.default
 
     # hyprland companion packages
     eww
