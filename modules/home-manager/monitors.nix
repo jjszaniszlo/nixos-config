@@ -42,7 +42,7 @@ in {
             default = null;
           };
           transform = mkOption {
-            type = types.attr;
+            type = types.attrs;
             default = {
               enable = false;
               value = "";
