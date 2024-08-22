@@ -6,21 +6,29 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Nixvim
     nixvim.url = "github:jjszaniszlo/nixvim-config";
 
     # nix-darwin
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # sops
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-
-      # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -30,7 +38,6 @@
     nixpkgs,
     nix-darwin,
     home-manager,
-    lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -43,7 +50,6 @@
       athena = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          lanzaboote.nixosModules.lanzaboote
           ./hosts/athena/configuration.nix
         ];
       };
@@ -68,11 +74,11 @@
 
     darwinConfigurations = {
       poseidon = nix-darwin.lib.darwinSystem {
-	  system = "aarch64-darwin";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/poseidon/configuration.nix
-          ];
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          ./hosts/poseidon/configuration.nix
+        ];
       };
     };
   };
