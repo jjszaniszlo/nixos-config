@@ -2,8 +2,11 @@
   imports = [
     ../common/global/nix.nix
     ../common/global/zsh.nix
-    ./homebrew.nix
     ../common/users/jjszaniszlo/darwin.nix
+    ./homebrew.nix
+    ./keyboard.nix
+    ./system-defaults.nix
+    ./yabai.nix
   ];
 
   environment.systemPackages = with pkgs; [
