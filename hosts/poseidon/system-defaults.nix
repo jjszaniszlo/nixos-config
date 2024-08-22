@@ -1,6 +1,10 @@
 {
   system = {
     defaults = {
+      menuExtraClock = {
+        Show24Hour = true;
+        ShowAMPM = false;
+      };
       NSGlobalDomain = {
         "com.apple.keyboard.fnState" = true;
       };
