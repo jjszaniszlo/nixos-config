@@ -18,8 +18,7 @@
 
   fonts.packages = with pkgs; [
     font-awesome
-    victor-mono
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override { fonts = [ "VictorMono" ]; })
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

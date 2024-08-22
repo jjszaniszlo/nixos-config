@@ -1,5 +1,6 @@
 {pkgs, ...} : {
   imports = [
+    ./packages/dev
     ./global
     ./packages/programs/neovim.nix
     ./packages/programs/wezterm.nix

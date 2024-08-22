@@ -1,10 +1,11 @@
-{
+{pkgs, ...}: {
   services.spacebar = {
     enable = true;
+    package = pkgs.spacebar;
     config = {
       position = "top";
-      height = 26;
-      title = "on";
+      height = 35;
+      title = "off";
       spaces = "on";
       clock = "on";
       power = "on";
@@ -19,7 +20,7 @@
       dnd_icon_color             = "0xffa8a8a8";
       clock_icon_color           = "0xffa8a8a8";
       text_font                  = ''"Victor Mono:Regular:12.0"'';
-      icon_font                  = ''"Font Awesome 5 Free:Solid:12.0"'';
+      icon_font                  = ''"Font Awesome 6 Free:Solid:12.0"'';
       power_icon_strip           = " ";
       space_icon                 = "•";
       space_icon_strip           = "1 2 3 4 5 6 7 8 9 10";
@@ -31,10 +32,13 @@
       space_icon_color_tertiary  = "0xfffff9b0";
       clock_icon                 = "";
       dnd_icon                   = "";
-      clock_format               = ''"%d/%m/%y %R"'';
+      clock_format               = ''"%Y/%m/%d %R"'';
       right_shell                = "on";
       right_shell_icon           = "";
-      right_shell_command        = "wezterm";
+      right_shell_command        = "whoami";
     };
   };
+  services.spacebar.config.debug_output = "on";
+  launchd.user.agents.spacebar.serviceConfig.StandardErrorPath = "/tmp/spacebar.err.log";
+  launchd.user.agents.spacebar.serviceConfig.StandardOutPath = "/tmp/spacebar.out.log";
 }

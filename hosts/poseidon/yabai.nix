@@ -7,7 +7,7 @@
       bottom_padding = 9;
       left_padding = 9;
       right_padding = 9;
-      top_padding = 9;
+      top_padding = 13;
       window_gap = 9;
 
       mouse_follows_focus = "on";
@@ -31,6 +31,6 @@
 
       window_placement = "second_child";
       window_topmost = "on";
-    };
+    };  
   };
 }
