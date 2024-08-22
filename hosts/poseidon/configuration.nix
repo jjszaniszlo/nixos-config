@@ -5,6 +5,7 @@
     ../common/users/jjszaniszlo/darwin.nix
     ./homebrew.nix
     ./keyboard.nix
+    ./skhd.nix
     ./system-defaults.nix
     ./yabai.nix
   ];
