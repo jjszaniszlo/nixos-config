@@ -8,6 +8,9 @@
       "wezterm"
       "vivaldi"
     ];
+    masApps = {
+      "Bitwarden" = 1352778147;
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -32,24 +35,50 @@
   services.nix-daemon.enable = true;
 
   system = {
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
+      userKeyMapping = [
+        { # set left fn to be control
+          HIDKeyboardModifierMappingSrc = 1095216660483;
+          HIDKeyboardModifierMappingDst = 30064771296;
+        }
+        { # set right option to be fn
+          HIDKeyboardModifierMappingSrc = 30064771302;
+          HIDKeyboardModifierMappingDst = 1095216660483;
+        }
+      ];
+    };
     activationScripts = {
-      postUserActivation.text = "defaultbrowser vivaldi";
+      postUserActivation.text = ''
+        defaultbrowser vivaldi
+        # Following line should allow us to avoid a logout/login cycle
+        /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+      '';
     };
     stateVersion = 4;
-    defaults.dock = {
-      autohide = true;
-      persistent-apps = [
-        "/System/Applications/Launchpad.app"
-        "/Applications/WezTerm.app"
-        "/Applications/Vivaldi.app"
-        "/System/Applications/Messages.app"
-        "/System/Applications/Mail.app"
-      ];
-      tilesize = 48;
-      wvous-br-corner = 1;
-      magnification = false;
+    defaults = {
+      NSGlobalDomain = {
+        "com.apple.keyboard.fnState" = true;
+      };
+      dock = {
+        autohide = true;
+        show-process-indicators = false;
+        show-recents = false;
+        static-only = true;
+      };
+      finder = {
+        AppleShowAllExtensions = true;
+        ShowPathbar = false;
+        FXEnableExtensionChangeWarning = false;
+        _FXShowPosixPathInTitle = true;
+      };
     };
   };
+
+  system.defaults.CustomUserPreferences = {
+  };
+
   users.users.jjszaniszlo = {
     home = "/Users/jjszaniszlo"; 
 
