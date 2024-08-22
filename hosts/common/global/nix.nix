@@ -22,7 +22,11 @@ in
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval = {
+        Hour = 0;
+        Minute = 0;
+        Weekday = 7;
+      };
       options = "--delete-older-than +3";
     };
 
