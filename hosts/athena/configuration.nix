@@ -13,8 +13,7 @@ _: {
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
   ]; 
-
-
+ 
   networking = {
     hostName = "athena";
     networkmanager.enable = true;

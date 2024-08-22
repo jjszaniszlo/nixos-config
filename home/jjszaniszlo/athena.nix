@@ -1,38 +1,24 @@
 {
-  inputs,
   outputs,
   pkgs,
   ...
 }: {
   imports = [
     ./global
-    ./packages/desktop/hyprland.nix
+    ./packages/desktop/hyprland
     ./packages/gaming
+    ./packages/programs/neovim.nix
     ./packages/programs/wezterm.nix
     ./packages/cli/zsh.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
-  # Install programs
-  programs.firefox.enable = true;
-
   home.packages = with pkgs; [
     wget
-    lutris
     discord
     xivlauncher
-    wl-clipboard
     lazygit
     vivaldi
     bitwarden-desktop
-    git
-    inputs.nixvim.packages.x86_64-linux.default
-    ripgrep
-
-    # hyprland companion packages
-    eww
-    dunst
-    swww
-    rofi-wayland    
   ];
 
   monitors = [

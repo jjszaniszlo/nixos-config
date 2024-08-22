@@ -1,15 +1,16 @@
-{inputs, pkgs, ...} : {
+{pkgs, ...} : {
   imports = [
     ./global
+    ./packages/programs/neovim.nix
     ./packages/programs/wezterm.nix
     ./packages/cli/zsh.nix
   ];
 
-  home.homeDirectory = "/Users/jjszaniszlo";
-
-  home.packages = with pkgs; [ 
-    inputs.nixvim.packages.aarch64-darwin.default
-    lazygit
-    ripgrep
-  ];
+  home = {
+    homeDirectory = "/Users/jjszaniszlo";
+    sessionVariables.FLAKE = "$HOME/.nix-config";
+    packages = with pkgs; [ 
+      lazygit
+    ];
+  };
 }

@@ -91,8 +91,8 @@ in
 			bind = [
 				"$mainMod, Q, exec, $terminal"
 				"$mainMod, C, killactive,"
-			  	"$mainMod, M, exit,"
-			  	"$mainMod, V, togglefloating,"
+			  "$mainMod, M, exit,"
+			  "$mainMod, V, togglefloating,"
 				"$mainMod, R, exec, $menu"
 				"$mainMod, P, pseudo,"
 				"$mainMod, J, togglesplit,"
@@ -119,19 +119,19 @@ in
 				"$mainMod SHIFT, 4, movetoworkspace, 4"
 				"$mainMod SHIFT, 5, movetoworkspace, 5"
 				"$mainMod SHIFT, 6, movetoworkspace, 6"
-			  	"$mainMod SHIFT, 7, movetoworkspace, 7"
-			  	"$mainMod SHIFT, 8, movetoworkspace, 8"
-			  	"$mainMod SHIFT, 9, movetoworkspace, 9"
-			  	"$mainMod SHIFT, 0, movetoworkspace, 10"
+			  "$mainMod SHIFT, 7, movetoworkspace, 7"
+			  "$mainMod SHIFT, 8, movetoworkspace, 8"
+			  "$mainMod SHIFT, 9, movetoworkspace, 9"
+			  "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-			  	"$mainMod, S, togglespecialworkspace, magic"
-			  	"$mainMod SHIFT, S, movetoworkspace, special:magic"
+			  "$mainMod, S, togglespecialworkspace, magic"
+			  "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-			  	"$mainMod, mouse_down, workspace, e+1"
-			  	"$mainMod, mouse_up, workspace, e-1"
+			  "$mainMod, mouse_down, workspace, e+1"
+			  "$mainMod, mouse_up, workspace, e-1"
 				", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
 				", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-    			];
+    	];
 			bindm = [
 				"$mainMod, mouse:272, movewindow"
 				"$mainMod, mouse:273, resizewindow"
@@ -139,4 +139,12 @@ in
 			windowrulev2 = "suppressevent maximize, class:.*";
 		};
 	};
+
+  home.packages = with pkgs; [
+    eww
+    dunst
+    swww
+    rofi-wayland    
+    wl-clipboard
+  ];
 }
