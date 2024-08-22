@@ -16,9 +16,4 @@ in
       X11Forwarding = true;
     };
   };
-  programs.ssh = {
-    knownHosts = lib.genAttrs hosts (hostname: {
-      publicKeyFile = ../../${hostname}/ssh_host_ed25519_key.pub;
-    });
-  };
 }
