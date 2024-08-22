@@ -7,12 +7,19 @@
     ./finder.nix
     ./keyboard.nix
     ./skhd.nix
+    ./spacebar.nix
     ./system-defaults.nix
     ./yabai.nix
   ];
 
   environment.systemPackages = with pkgs; [
     defaultbrowser
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    victor-mono
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
