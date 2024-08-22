@@ -1,6 +1,8 @@
 {inputs, pkgs, ...} : {
   imports = [
     ./global
+    ./packages/programs/wezterm.nix
+    ./packages/cli/zsh.nix
   ];
 
   home.homeDirectory = "/Users/jjszaniszlo";
