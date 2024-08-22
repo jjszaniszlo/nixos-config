@@ -1,7 +1,7 @@
 {pkgs, ...} : {
   imports = [
     ../common/global/nix.nix
-    ../common/global/zs.nix
+    ../common/global/zsh.nix
     ./homebrew.nix
     ../common/users/jjszaniszlo/darwin.nix
   ];
