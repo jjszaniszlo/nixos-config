@@ -52,14 +52,14 @@
     homeConfigurations = {
       "jjszaniszlo@athena" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/jjszaniszlo/athena.nix
         ];
       };
       "jjszaniszlo@poseidon" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs-darwin;
-        extraSpecialArgs = {inherit inputs outputs;};
+        pkgs = pkgs-darwin;
+        extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/jjszaniszlo/poseidon.nix
         ];
@@ -67,7 +67,9 @@
     };
 
     darwinConfigurations = {
-      "jjszaniszlo@poseidon" = nix-darwin.lib.darwinSystem {
+      poseidon = nix-darwin.lib.darwinSystem {
+	  system = "aarch64-darwin";
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/poseidon/configuration.nix
           ];
