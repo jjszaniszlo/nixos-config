@@ -7,10 +7,11 @@
 
       local config = wezterm.config_builder()
       config.color_scheme = 'Kanagawa (Gogh)'
-      config.window_background_opacity = 0.8
-      config.macos_window_background_blur = 80
+      -- config.window_background_opacity = 0.8
+      -- config.macos_window_background_blur = 80
       config.font_size = 22
       config.dpi = 144
+      config.enable_wayland = false
 
       local function tab_title(tab_info)
         local title = tab_info.tab_title
