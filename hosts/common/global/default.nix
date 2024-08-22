@@ -3,6 +3,7 @@ _: {
     ./locale.nix
     ./nix.nix
     ./steam-hardware.nix
+    ./zsh.nix
   ];
 
   nixpkgs = {

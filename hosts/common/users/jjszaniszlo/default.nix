@@ -6,6 +6,7 @@ in
   users.users.jjszaniszlo = {
     isNormalUser = true;
     description = "John Szaniszlo";
+    shell = pkgs.zsh;
     extraGroups = ifTheyExist ["networkmanager" "wheel"];
 
     packages = with pkgs; [

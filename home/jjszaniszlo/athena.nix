@@ -9,6 +9,7 @@
     ./packages/desktop/hyprland.nix
     ./packages/gaming
     ./packages/programs/wezterm.nix
+    ./packages/cli/zsh.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   # Install programs
