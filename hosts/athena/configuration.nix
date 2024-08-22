@@ -14,6 +14,7 @@ _: {
     ./hardware-configuration.nix
   ]; 
 
+
   networking = {
     hostName = "athena";
     networkmanager.enable = true;

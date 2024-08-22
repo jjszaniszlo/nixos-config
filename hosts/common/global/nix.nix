@@ -1,4 +1,4 @@
-{lib, inputs, config, ...} : 
+{lib, inputs, config, pkgs, ...} : 
 let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in
@@ -18,6 +18,7 @@ in
       nix-path = config.nix.nixPath;
     };
     channel.enable = false;
+    package = pkgs.nix;
 
     gc = {
       automatic = true;

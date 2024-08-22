@@ -1,4 +1,10 @@
 {pkgs, ...} : {
+  imports = [
+    ../common/global/nix.nix
+    ../common/global/zsh.nix
+    ../common/users/jjszaniszlo/darwin.nix
+  ];
+
   homebrew = {
     enable = true;
 
@@ -17,19 +23,7 @@
     defaultbrowser
   ];
 
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    package = pkgs.nix;
-  };
-
   nixpkgs.hostPlatform = "aarch64-darwin";
-
-  programs.zsh.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true;
   services.nix-daemon.enable = true;
@@ -77,14 +71,5 @@
   };
 
   system.defaults.CustomUserPreferences = {
-  };
-
-  users.users.jjszaniszlo = {
-    home = "/Users/jjszaniszlo"; 
-    shell = pkgs.zsh;
-
-    packages = with pkgs; [
-      home-manager
-    ];
   };
 }

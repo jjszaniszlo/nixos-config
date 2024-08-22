@@ -1,9 +1,9 @@
-_: {
+_ : {
   imports = [
-    ./locale.nix
-    ./nix.nix
-    ./steam-hardware.nix
-    ./zsh.nix
+      ./locale.nix
+      ./nix.nix
+      ./steam-hardware.nix
+      ./zsh.nix
   ];
 
   nixpkgs = {
