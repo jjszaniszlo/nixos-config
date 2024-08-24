@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    systems.url = "github:nix-systems/default";
 
     # Home manager
     home-manager = {
@@ -36,49 +37,54 @@
   outputs = {
     self,
     nixpkgs,
+    systems,
     nix-darwin,
     home-manager,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    pkgs-darwin = nixpkgs.legacyPackages.aarch64-darwin;
+    lib = nixpkgs.lib // home-manager.lib // nix-darwin.lib;
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );
   in {
+    inherit lib;
+    nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
     nixosConfigurations = {
-      athena = nixpkgs.lib.nixosSystem {
+      # main desktop
+      athena = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/athena/configuration.nix
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      "jjszaniszlo@athena" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs outputs; };
-        modules = [
-          ./home/jjszaniszlo/athena.nix
-        ];
-      };
-      "jjszaniszlo@poseidon" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs-darwin;
-        extraSpecialArgs = { inherit inputs outputs; };
-        modules = [
-          ./home/jjszaniszlo/poseidon.nix
-        ];
+        modules = [ ./hosts/athena/configuration.nix ];
       };
     };
 
     darwinConfigurations = {
-      poseidon = nix-darwin.lib.darwinSystem {
+      # 16" mbp m1-pro
+      poseidon = lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./hosts/poseidon/configuration.nix
-        ];
+        modules = [ ./hosts/poseidon/configuration.nix ];
+      };
+    };
+
+    homeConfigurations = {
+      # main desktop home
+      "jjszaniszlo@athena" = lib.homeManagerConfiguration {
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = { inherit inputs outputs; };
+        modules = [ ./home/jjszaniszlo/athena.nix ];
+      };
+      # 16" mbp m1 pro home
+      "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
+        pkgs = pkgsFor.aarch64-darwin;
+        extraSpecialArgs = { inherit inputs outputs; };
+        modules = [ ./home/jjszaniszlo/poseidon.nix ];
       };
     };
   };
