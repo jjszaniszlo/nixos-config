@@ -44,6 +44,7 @@
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // home-manager.lib // nix-darwin.lib;
+    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
       system:
         import nixpkgs {
@@ -55,6 +56,8 @@
     inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
+
+    packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
 
     nixosConfigurations = {
       # main desktop

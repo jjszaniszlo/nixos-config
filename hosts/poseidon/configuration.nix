@@ -28,6 +28,9 @@
 
   system = {
     activationScripts = {
+      extraActivation.text = ''
+        softwareupdate --install-rosetta --agree-to-license
+      '';
       postUserActivation.text = ''
         defaultbrowser vivaldi
         # Following line should allow us to avoid a logout/login cycle
