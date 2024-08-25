@@ -62,7 +62,7 @@
     nixosConfigurations = {
       # main desktop
       athena = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = { inherit inputs outputs; };
         modules = [ ./hosts/athena/configuration.nix ];
       };
     };
@@ -81,13 +81,13 @@
       "jjszaniszlo@athena" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = { inherit inputs outputs; };
-        modules = [ ./home/jjszaniszlo/athena.nix ];
+        modules = [ ./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix ];
       };
       # 16" mbp m1 pro home
       "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
         extraSpecialArgs = { inherit inputs outputs; };
-        modules = [ ./home/jjszaniszlo/poseidon.nix ];
+        modules = [ ./home/jjszaniszlo/poseidon.nix ./home/jjszaniszlo/nixpkgs.nix ];
       };
     };
   };
