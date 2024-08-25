@@ -1,4 +1,4 @@
-{pkgs, lib, ...}:
+{pkgs}:
 pkgs.lib.listToAttrs (
   map (w: {
     inherit (w) name;
@@ -6,8 +6,8 @@ pkgs.lib.listToAttrs (
       inherit (w) sha256;
       name = "${w.name}.${w.ext}";
       url = (id:
-        (lib.toJSON
-          (lib.runCommand
+        (pkgs.lib.toJSON
+          (pkgs.lib.runCommand
             "GetJSON"
             {}
             ''curl https://wallhaven.cc/api/v1/w/${w.id}''
