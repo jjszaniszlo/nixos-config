@@ -20,13 +20,10 @@ in
     channel.enable = false;
     package = pkgs.nix;
 
-    gc = {
+    gc = lib.mkDefault {
       automatic = true;
-      interval = {
-        Hour = 0;
-        Minute = 0;
-        Weekday = 7;
-      };
+      dates = "weekly";
+      # Keep the last 3 generations
       options = "--delete-older-than +3";
     };
 

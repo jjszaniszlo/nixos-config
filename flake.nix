@@ -13,7 +13,9 @@
     };
 
     # Nixvim
-    nixvim.url = "github:jjszaniszlo/nixvim-config";
+    nixvim = {
+      url = "github:jjszaniszlo/nixvim-config";
+    };
 
     # nix-darwin
     nix-darwin = {
@@ -31,6 +33,10 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
     };
   };
 
@@ -56,6 +62,8 @@
     inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
+
+    overlays = import ./overlays {inherit inputs outputs;};
 
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
 
