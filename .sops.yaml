@@ -1,0 +1,9 @@
+keys:
+  - &hosts:
+    - &athena age1h3l56a494mwkw240tzwhcs3ku4y9vp4nah8txypmagr3xh0mwyks88g0da
+
+creation_rules:
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+      - age:
+        - *athena
