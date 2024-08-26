@@ -12,6 +12,17 @@
     ./yabai.nix
   ];
 
+  # gc override for different format on nix-darwin
+  nix.gc = {
+    automatic = true;
+    interval = {
+      Hour = 0;
+      Minute = 0;
+      Weekday = 7;
+    };
+    options = "--delete-older-than +3";
+  };
+
   environment.systemPackages = with pkgs; [
     defaultbrowser
   ];

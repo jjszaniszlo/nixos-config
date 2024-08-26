@@ -12,6 +12,8 @@
     ./packages/cli/zsh.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
+  wallpaper = pkgs.wallpapers.rx7-blue-dark;
+
   home.packages = with pkgs; [
     wget
     discord
