@@ -7,8 +7,6 @@
     ./packages/cli/zsh.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
-  wallpaper = pkgs.wallpapers.rx7-blue-dark;
-
   home = {
     homeDirectory = "/Users/jjszaniszlo";
     sessionVariables.FLAKE = "$HOME/.nix-config";

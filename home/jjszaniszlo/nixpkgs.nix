@@ -1,7 +1,7 @@
 {
-  outputs,
   lib,
   inputs,
+  pkgs,
   ...
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -15,6 +15,7 @@ in {
       warn-dirty = false;
       flake-registry = "";
     };
+    package = pkgs.nix;
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
   };
 
@@ -23,7 +24,6 @@ in {
   };
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
