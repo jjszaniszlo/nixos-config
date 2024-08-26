@@ -1,12 +1,4 @@
 {lib, config, ...} : {
-  nixpkgs = {
-    overlays = [];
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
   home = {
     username = lib.mkDefault "jjszaniszlo";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
