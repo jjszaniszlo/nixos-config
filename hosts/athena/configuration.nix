@@ -4,6 +4,7 @@ _: {
   imports = [
     ../common/global
     ../common/programs/hyprland.nix
+    ../common/programs/notion-enhancer.nix
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix
     ../common/services/lanzaboote.nix
