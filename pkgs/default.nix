@@ -1,3 +1,3 @@
-{pkgs ? import <nixpkgs> {}, ...} : rec {
+{pkgs ? import <nixpkgs> {}}: {
   wallpapers = import ./wallpapers { inherit pkgs; };
 }

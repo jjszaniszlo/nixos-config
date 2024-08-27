@@ -2,6 +2,7 @@
   outputs,
   lib,
   inputs,
+  pkgs,
   ...
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -16,6 +17,7 @@ in {
       flake-registry = "";
     };
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    package = pkgs.nix;
   };
 
   home.sessionVariables = {

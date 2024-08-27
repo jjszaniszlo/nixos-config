@@ -5,15 +5,7 @@ pkgs.lib.listToAttrs (
     value = pkgs.fetchurl {
       inherit (w) sha256;
       name = "${w.name}.${w.ext}";
-      url = (id:
-        (pkgs.lib.toJSON
-          (pkgs.lib.runCommand
-            "GetJSON"
-            {}
-            ''curl https://wallhaven.cc/api/v1/w/${w.id}''
-          )
-        ).path
-      ) w.id;
+      url = (builtins.fromJSON (builtins.readFile (pkgs.fetchurl { url = "https://wallhaven.cc/api/v1/w/${w.id}"; hash = "sha256-zGGwpJ5dPCrpRK7RnBaMkLV1a/v3F73R4ZrZXjM8vuI="; }))).data.path;
     };
   }) (pkgs.lib.importJSON ./list.json)
 )
