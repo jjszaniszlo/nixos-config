@@ -3,7 +3,6 @@
   stdenvNoCC,
   curl,
   jq,
-  tr,
 }: {
   id ? "",
   name ? "",
@@ -18,7 +17,7 @@
 in stdenvNoCC.mkDerivation {
   name = _name;
   builder = ./builder.sh;
-  nativeBuildInputs = [ curl jq tr ];
+  nativeBuildInputs = [ curl jq ];
 
   reqURL = "https://wallhaven.cc/api/v1/w/${_id}";
   
