@@ -2,14 +2,15 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 _: {
   imports = [
+    ../common/desktop/hyprland.nix
     ../common/global
-    ../common/programs/hyprland.nix
     ../common/programs/notion-enhancer.nix
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix
     ../common/services/lanzaboote.nix
     ../common/services/pipewire.nix
     ../common/services/printing.nix
+    ../common/services/steam-hardware.nix
     ../common/services/systemd-boot.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix

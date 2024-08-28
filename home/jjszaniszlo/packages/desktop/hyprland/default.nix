@@ -3,6 +3,18 @@ let
 	startup-script = pkgs.pkgs.writeShellScriptBin "start" '''';
 in
 {
+  imports = [
+    ../common
+  ];
+
+  xdg.portal = let
+    hyprland = config.wayland.windowManager.hyprland.package;
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
+    extraPortals = [xdph];
+    configPackages = [hyprland];
+  };
+
 	wayland.windowManager.hyprland = {
 		enable = true;
 		settings = {
@@ -24,7 +36,7 @@ in
         force_zero_scaling = true;
       };
 			env = [
-        "GDK_SCALE,2"
+        "GDK_SCALE,1"
 				"XCURSOR_SIZE,24"
 				"HYPRCURSOR_SIZE,24"
 			];
@@ -149,6 +161,5 @@ in
     dunst
     swww
     rofi-wayland    
-    wl-clipboard
   ];
 }
