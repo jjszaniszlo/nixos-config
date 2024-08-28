@@ -1,3 +1,4 @@
-{pkgs ? import <nixpkgs> {}}: {
-  wallpapers = import ./wallpapers { inherit pkgs; };
+{ pkgs ? import <nixpkgs> {}, ... }: rec {
+  fetchWallhaven = pkgs.callPackage ./fetchwallhaven {};
+  wallpapers = import ./wallpapers { inherit pkgs fetchWallhaven; };
 }
