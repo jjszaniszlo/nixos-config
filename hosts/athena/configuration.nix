@@ -13,7 +13,11 @@ _: {
     ../common/services/systemd-boot.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
-  ]; 
+  ];
+
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
  
   networking = {
     hostName = "athena";

@@ -6,7 +6,7 @@ in
 	wayland.windowManager.hyprland = {
 		enable = true;
 		settings = {
-			monitor = map (
+			monitor = [", highres, auto, 2"] ++ map (
         m: "${m.name},${toString m.width}x${toString m.height}@${toString m.refresh-rate},${m.position},1${
           if m.transform.enable
           then ",transform,${toString m.transform.value}"
@@ -20,7 +20,11 @@ in
 				"eww open & hyprpaper"
 				''${startup-script}/bin/start''
 			];
+      xwayland = {
+        force_zero_scaling = true;
+      };
 			env = [
+        "GDK_SCALE,2"
 				"XCURSOR_SIZE,24"
 				"HYPRCURSOR_SIZE,24"
 			];
