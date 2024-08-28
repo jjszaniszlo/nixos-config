@@ -73,6 +73,11 @@
         specialArgs = { inherit inputs outputs; };
         modules = [ ./hosts/athena/configuration.nix ];
       };
+      # raspberry pi 4
+      hera = lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [ ./hosts/hera/configuration.nix ];
+      };
     };
 
     darwinConfigurations = {
