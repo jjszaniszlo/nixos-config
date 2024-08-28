@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
 
+    hardware.url = "github:nixos/nixos-hardware";
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -72,6 +73,11 @@
       athena = lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
         modules = [ ./hosts/athena/configuration.nix ];
+      };
+      # raspberry pi 4
+      hera = lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [ ./hosts/hera/configuration.nix ];
       };
     };
 

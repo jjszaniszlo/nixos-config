@@ -1,5 +1,7 @@
 {
   inputs,
+  outputs,
+  ...
 }: let
 in {
   flake-inputs = final: _: {
@@ -21,5 +23,5 @@ in {
     stable = inputs.nixpkgs-stable.legacyPackages.${final.system};
   };
 
-  additions = final: import ../pkgs {pkgs = final;};
+  additions = final: prev: import ../pkgs {pkgs = final;};
 }

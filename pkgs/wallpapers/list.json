@@ -1,8 +1,8 @@
 [
   {
-    "ext": "png",
-    "id": "m93rg9",
     "name": "rx7-blue-dark",
-    "sha256": "",
-  },
+    "id": "m93rg9",
+    "sha256" : "1apwf42xk164a0aq4lai7gvhym9xinw2nbhqlj92bkrssc7sjfpp",
+    "ext" : "png"
+  }
 ]

@@ -5,23 +5,13 @@
 }: {
   imports = [
     ./global
+    ./packages/cli
     ./packages/desktop/hyprland
     ./packages/gaming
-    ./packages/programs/neovim.nix
-    ./packages/programs/wezterm.nix
-    ./packages/cli/zsh.nix
+    ./packages/programs
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
-
-  home.packages = with pkgs; [
-    wget
-    discord
-    xivlauncher
-    lazygit
-    vivaldi
-    bitwarden-desktop
-  ];
 
   monitors = [
     {

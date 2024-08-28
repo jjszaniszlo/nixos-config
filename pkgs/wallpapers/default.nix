@@ -1,19 +1,10 @@
-{pkgs}:
+{ pkgs, fetchWallhaven, ... }:
 pkgs.lib.listToAttrs (
   map (w: {
     inherit (w) name;
-    value = pkgs.fetchurl {
-      inherit (w) sha256;
+    value = fetchWallhaven {
+      inherit (w) sha256 id;
       name = "${w.name}.${w.ext}";
-      url = (id:
-        (pkgs.lib.toJSON
-          (pkgs.lib.runCommand
-            "GetJSON"
-            {}
-            ''curl https://wallhaven.cc/api/v1/w/${w.id}''
-          )
-        ).path
-      ) w.id;
     };
   }) (pkgs.lib.importJSON ./list.json)
 )
