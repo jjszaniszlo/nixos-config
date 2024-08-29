@@ -4,5 +4,11 @@
     "id": "m93rg9",
     "sha256" : "1apwf42xk164a0aq4lai7gvhym9xinw2nbhqlj92bkrssc7sjfpp",
     "ext" : "png"
+  },
+  {
+    "name": "cgi-room",
+    "id": "kx5v57",
+    "sha256" : "1l36s3wcb843gb7vpaf2l58gr49l85f81ypi97gs0jwr6bgz5sv8",
+    "ext" : "jpg"
   }
 ]

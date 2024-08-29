@@ -1,5 +1,13 @@
 source $stdenv/setup
 
+curl2=(
+  curl
+)
+
+if ! [ -f "$SSL_CERT_FILE" ]; then
+    curl+=(--insecure)
+fi
+
 finalDownload="$out"
 
 tryFetch() {
@@ -13,11 +21,13 @@ tryImgDownload() {
     echo "trying to download image: $url"
     local curlexit=18;
 
-    success=
+    hash=$(nix-prefetch-url $url --type sha256 --name $name)
 
+    success=
     while [ $curlexit -eq 18 ]; do
-      if $(curl -C - "$url" --output "$finalDownload"); then
+      if "${curl[@]}" -C - "$url" --output "$finalDownload"; then
           success=1
+          echo $hash
           break
        else
           curlexit=$?;
