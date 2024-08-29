@@ -3,6 +3,7 @@
     ../common/global/nix.nix
     ../common/global/zsh.nix
     ../common/users/jjszaniszlo/darwin.nix
+    ../common/services/direnv.nix
     ./homebrew.nix
     ./finder.nix
     ./keyboard.nix
