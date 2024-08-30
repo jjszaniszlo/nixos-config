@@ -1,14 +1,26 @@
 [
   {
-    "name": "rx7-blue-dark",
-    "id": "m93rg9",
-    "sha256" : "1apwf42xk164a0aq4lai7gvhym9xinw2nbhqlj92bkrssc7sjfpp",
-    "ext" : "png"
+    "name": "cgi-room",
+    "ext": "jpeg",
+    "sha256": "167rzrvs14yaxqdsp3w9vfg6dwy59cw5snqkw4fp4d5rv771apxg",
+    "url": "https://w.wallhaven.cc/full/kx/wallhaven-kx5v57.jpg"
   },
   {
-    "name": "cgi-room",
-    "id": "kx5v57",
-    "sha256" : "1l36s3wcb843gb7vpaf2l58gr49l85f81ypi97gs0jwr6bgz5sv8",
-    "ext" : "jpg"
+    "name": "mountain-house",
+    "ext": "jpeg",
+    "sha256": "0f9v4ikssdq40wwrvd6bqnv29y680zal3aw3qjni8l95kjz54in3",
+    "url": "https://w.wallhaven.cc/full/d6/wallhaven-d6y12l.jpg"
+  },
+  {
+    "name": "rx7-blue-dark",
+    "ext": "png",
+    "sha256": "0mclx3l5waycfhfh515wabpyxvniqzchx7bai1c7fqm1z0lxcgb8",
+    "url": "https://w.wallhaven.cc/full/m9/wallhaven-m93rg9.png"
+  },
+  {
+    "name": "sci-fi-city",
+    "ext": "jpeg",
+    "sha256": "0ysnv57dlsdv3qawy6ffmbbpxswnqxyp9xg2wmpwnmxc2lkd9b7c",
+    "url": "https://w.wallhaven.cc/full/3l/wallhaven-3l828y.jpg"
   }
 ]

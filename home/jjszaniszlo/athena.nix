@@ -11,7 +11,7 @@
     ./packages/programs
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
-  wallpaper = pkgs.wallpapers.cgi-room;
+  wallpaper = pkgs.wallpapers.sci-fi-city;
 
   monitors = [
     {
