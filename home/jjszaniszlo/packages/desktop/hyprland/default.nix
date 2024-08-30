@@ -155,5 +155,6 @@ in
     dunst
     swww
     rofi-wayland    
+    swaybg
   ];
 }
