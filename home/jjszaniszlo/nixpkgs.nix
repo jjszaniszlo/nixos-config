@@ -1,5 +1,4 @@
 {
-  outputs,
   lib,
   inputs,
   pkgs,
@@ -16,8 +15,8 @@ in {
       warn-dirty = false;
       flake-registry = "";
     };
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     package = pkgs.nix;
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
   };
 
   home.sessionVariables = {
@@ -25,7 +24,6 @@ in {
   };
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;

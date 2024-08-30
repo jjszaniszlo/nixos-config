@@ -3,6 +3,7 @@
     ../common/global/nix.nix
     ../common/global/zsh.nix
     ../common/users/jjszaniszlo/darwin.nix
+    ../common/services/direnv.nix
     ./homebrew.nix
     ./finder.nix
     ./keyboard.nix
@@ -13,14 +14,10 @@
   ];
 
   # gc override for different format on nix-darwin
-  nix.gc = {
-    automatic = true;
-    interval = {
-      Hour = 0;
-      Minute = 0;
-      Weekday = 7;
-    };
-    options = "--delete-older-than +3";
+  nix.gc.interval = {
+    Hour = 0;
+    Minute = 0;
+    Weekday = 7;
   };
 
   environment.systemPackages = with pkgs; [
@@ -44,6 +41,7 @@
       '';
       postUserActivation.text = ''
         defaultbrowser vivaldi
+
         # Following line should allow us to avoid a logout/login cycle
         /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
       '';

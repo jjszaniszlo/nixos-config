@@ -3,13 +3,18 @@
     enable = true;
 
     taps = [];
-    brews = [];
+    brews = [
+    ];
     casks = [
       "wezterm"
       "vivaldi"
       "desktoppr"
+      "discord"
 
       "steam"
+
+      "notion"
+      "notion-calendar"
     ];
     masApps = {
       "Bitwarden" = 1352778147;
