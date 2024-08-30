@@ -16,6 +16,8 @@ _: {
     ./hardware-configuration.nix
   ];
 
+  nix.gc.dates = "weekly";
+
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
