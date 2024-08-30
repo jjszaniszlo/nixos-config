@@ -7,14 +7,6 @@ in
     ../common
   ];
 
-  xdg.portal = let
-    hyprland = config.wayland.windowManager.hyprland.package;
-    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
-  in {
-    extraPortals = [xdph];
-    configPackages = [hyprland];
-  };
-
 	wayland.windowManager.hyprland = {
 		enable = true;
 		settings = {
@@ -85,8 +77,7 @@ in
 				new_status = "master";
 			};
 			misc =  { 
-				force_default_wallpaper = 0;
-				disable_hyprland_logo = false;
+        new_window_takes_over_fullscreen = 2;
 			};
 			input = {
 				kb_layout = "us";
@@ -148,6 +139,9 @@ in
 				", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
 				", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     	];
+      exec = [
+        "${pkgs.swaybg}/bin/swaybg -i ${config.wallpaper} --mode fill"
+      ];
 			bindm = [
 				"$mainMod, mouse:272, movewindow"
 				"$mainMod, mouse:273, resizewindow"

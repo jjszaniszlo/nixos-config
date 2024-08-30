@@ -3,6 +3,7 @@
   stdenvNoCC,
   curl,
   jq,
+  cacert ? null
 }: {
   id ? "",
   name ? "",
@@ -12,8 +13,6 @@
     else throw "id cannot be an empty string!";
   _name = if name != "" then name
     else throw "name cannot be an empty string!";
-  _sha256 = if sha256 != "" then sha256
-    else throw "sha256 cannot be an empty string!";
 in stdenvNoCC.mkDerivation {
   name = _name;
   builder = ./builder.sh;
@@ -23,7 +22,13 @@ in stdenvNoCC.mkDerivation {
   
   nixpkgsVersion = lib.trivial.release;
 
+  SSL_CERT_FILE = if (sha256 == "" || sha256 == lib.fakeSha256)
+                  then "${cacert}/etc/ssl/certs/ca-bundle.crt"
+                  else "/no-cert-file.crt";
+
+  preferLocalBuild = true;
+
   # specify the content hash of this derivations output
   outputHashAlgo = "sha256";
-  outputHash = _sha256;
+  outputHash = sha256;
 }

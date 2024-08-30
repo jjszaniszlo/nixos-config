@@ -11,7 +11,7 @@
     ./packages/programs
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
-  wallpaper = pkgs.wallpapers.rx7-blue-dark;
+  wallpaper = pkgs.wallpapers.sci-fi-city;
 
   monitors = [
     {
