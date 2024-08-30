@@ -17,7 +17,6 @@ in {
     };
     package = pkgs.nix;
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    package = pkgs.nix;
   };
 
   home.sessionVariables = {
