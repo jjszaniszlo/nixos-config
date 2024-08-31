@@ -1,8 +1,12 @@
-{lib, inputs, config, pkgs, ...} : 
-let
-  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-in
 {
+  lib,
+  inputs,
+  config,
+  pkgs,
+  ...
+}: let
+  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+in {
   nix = {
     settings = {
       experimental-features = [

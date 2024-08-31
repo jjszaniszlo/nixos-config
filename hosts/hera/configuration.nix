@@ -1,13 +1,17 @@
-{ config, lib, pkgs, ... }: {
-  imports =
-    [
-      ../common/global/locale.nix
-      ../common/global/nix.nix
-      ../common/global/openssh.nix
-      ../common/global/zsh.nix
-      ../common/users/jjszaniszlo
-      ./hardware-configuration.nix
-    ];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ../common/global/locale.nix
+    ../common/global/nix.nix
+    ../common/global/openssh.nix
+    ../common/global/zsh.nix
+    ../common/users/jjszaniszlo
+    ./hardware-configuration.nix
+  ];
 
   nixpkgs = {
     overlays = [];
@@ -18,7 +22,7 @@
 
   users.users.admin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
   };
 
   boot.loader.grub.enable = false;

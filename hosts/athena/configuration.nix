@@ -20,7 +20,7 @@ _: {
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
- 
+
   networking = {
     hostName = "athena";
     networkmanager.enable = true;

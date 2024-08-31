@@ -1,4 +1,4 @@
-{...} : {
+{...}: {
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
@@ -31,6 +31,6 @@
 
       window_placement = "second_child";
       window_topmost = "on";
-    };  
+    };
   };
 }

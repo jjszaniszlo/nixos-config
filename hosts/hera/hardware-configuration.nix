@@ -1,23 +1,29 @@
-{ config, lib, pkgs, modulesPath, ... }: {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" ];
+      availableKernelModules = ["xhci_pci"];
     };
     loader.timeout = 5;
   };
 
   fileSystems = {
-    "/" = { 
+    "/" = {
       device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
       fsType = "ext4";
     };
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
 
