@@ -1,16 +1,11 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+_: {
   imports = [
+    ./alejandra.nix
     ./locale.nix
     ./nix.nix
     ./zsh.nix
     ./openssh.nix
   ];
-
-  environment.systemPackages = [inputs.alejandra.defaultPackage.${pkgs.system}];
 
   nixpkgs = {
     overlays = [];

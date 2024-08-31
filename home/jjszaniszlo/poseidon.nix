@@ -1,6 +1,5 @@
 {
   pkgs,
-  outputs,
   ...
 }: {
   imports =
@@ -10,8 +9,7 @@
       ./packages/programs/neovim.nix
       ./packages/programs/wezterm.nix
       ./packages/cli/zsh.nix
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
+    ];
 
   home = {
     homeDirectory = "/Users/jjszaniszlo";

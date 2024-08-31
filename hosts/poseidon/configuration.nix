@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ../common/global/alejandra.nix
     ../common/global/nix.nix
     ../common/global/zsh.nix
     ../common/users/jjszaniszlo/darwin.nix
