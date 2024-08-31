@@ -1,4 +1,4 @@
-{ pkgs }:
+{pkgs}:
 pkgs.lib.listToAttrs (
   map (w: {
     inherit (w) name;
