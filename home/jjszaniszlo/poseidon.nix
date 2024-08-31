@@ -4,11 +4,10 @@
 }: {
   imports =
     [
-      ./packages/dev
+      ./packages/cli
       ./global
       ./packages/programs/neovim.nix
       ./packages/programs/wezterm.nix
-      ./packages/cli/zsh.nix
     ];
 
   home = {

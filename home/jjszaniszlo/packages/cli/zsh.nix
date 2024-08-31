@@ -12,6 +12,7 @@
       plugins = [
         "sudo"
         "vi-mode"
+        "direnv"
       ];
       theme = "robbyrussell";
     };
