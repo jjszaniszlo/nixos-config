@@ -1,5 +1,4 @@
 {
-  outputs,
   pkgs,
   ...
 }: {
@@ -9,7 +8,7 @@
     ./packages/desktop/hyprland
     ./packages/gaming
     ./packages/programs
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
 
