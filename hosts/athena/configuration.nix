@@ -4,7 +4,6 @@ _: {
   imports = [
     ../common/desktop/hyprland.nix
     ../common/global
-    ../common/programs/notion-enhancer.nix
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix
     ../common/services/lanzaboote.nix
@@ -21,7 +20,7 @@ _: {
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
- 
+
   networking = {
     hostName = "athena";
     networkmanager.enable = true;

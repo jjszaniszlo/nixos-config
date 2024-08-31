@@ -1,8 +1,4 @@
-{
-  inputs,
-  outputs,
-  ...
-}: let
+{inputs, ...}: let
 in {
   flake-inputs = final: _: {
     inputs =

@@ -1,8 +1,10 @@
-{pkgs, config, ...}: 
-let
-  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in
 {
+  pkgs,
+  config,
+  ...
+}: let
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in {
   users.users.jjszaniszlo = {
     isNormalUser = true;
     description = "John Szaniszlo";

@@ -3,19 +3,28 @@
 
   inputs = {
     # Nixpkgs
+    hardware.url = "github:nixos/nixos-hardware";
+    nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixvim.url = "github:jjszaniszlo/nixvim-config";
     systems.url = "github:nix-systems/default";
 
-    hardware.url = "github:nixos/nixos-hardware";
-    # Home manager
+    # alejandra
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nixvim
-    nixvim = {
-      url = "github:jjszaniszlo/nixvim-config";
+    # lanzaboote
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nix-darwin
@@ -28,16 +37,6 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # lanzaboote
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
     };
   };
 
@@ -71,13 +70,13 @@
     nixosConfigurations = {
       # main desktop
       athena = lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [ ./hosts/athena/configuration.nix ];
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/athena/configuration.nix];
       };
       # raspberry pi 4
       hera = lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [ ./hosts/hera/configuration.nix ];
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/hera/configuration.nix];
       };
     };
 
@@ -85,8 +84,8 @@
       # 16" mbp m1-pro
       poseidon = lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = { inherit inputs outputs; };
-        modules = [ ./hosts/poseidon/configuration.nix ];
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/poseidon/configuration.nix];
       };
     };
 
@@ -94,14 +93,14 @@
       # main desktop home
       "jjszaniszlo@athena" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = { inherit inputs outputs; };
-        modules = [ ./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix ];
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix];
       };
       # 16" mbp m1 pro home
       "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
-        extraSpecialArgs = { inherit inputs outputs; };
-        modules = [ ./home/jjszaniszlo/poseidon.nix ./home/jjszaniszlo/nixpkgs.nix ];
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./home/jjszaniszlo/poseidon.nix ./home/jjszaniszlo/nixpkgs.nix];
       };
     };
   };

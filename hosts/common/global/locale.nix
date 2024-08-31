@@ -1,7 +1,6 @@
-{lib, ...} : {
+{lib, ...}: {
   # timezone
   time.timeZone = lib.mkDefault "America/Los_Angeles";
-
 
   # locale
   i18n = {

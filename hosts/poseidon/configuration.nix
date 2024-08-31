@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{pkgs, ...}: {
   imports = [
     ../common/global/nix.nix
     ../common/global/zsh.nix
@@ -26,7 +26,7 @@
 
   fonts.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override { fonts = [ "VictorMono" ]; })
+    (nerdfonts.override {fonts = ["VictorMono"];})
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

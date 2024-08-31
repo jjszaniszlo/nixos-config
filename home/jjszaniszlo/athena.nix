@@ -1,17 +1,13 @@
-{
-  outputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./global
     ./packages/cli
     ./packages/desktop/hyprland
     ./packages/gaming
     ./packages/programs
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
 
-  wallpaper = pkgs.wallpapers.sci-fi-city;
+  wallpaper = pkgs.wallpapers.rx7-blue-dark;
 
   monitors = [
     {

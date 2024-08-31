@@ -1,9 +1,12 @@
-{outputs, lib, ...} : 
-let
-  hosts = lib.attrNames outputs.nixosConfigurations ++ 
-    lib.attrNames outputs.darwinConfigurations;
-in
 {
+  outputs,
+  lib,
+  ...
+}: let
+  hosts =
+    lib.attrNames outputs.nixosConfigurations
+    ++ lib.attrNames outputs.darwinConfigurations;
+in {
   services.openssh = {
     enable = true;
     settings = {
