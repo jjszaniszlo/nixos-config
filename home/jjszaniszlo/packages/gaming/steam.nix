@@ -1,21 +1,26 @@
-{pkgs, lib, config, ...} : 
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   steam-with-extras = pkgs.steam.override {
-    extraPkgs = pkgs: with pkgs; [
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
-      xorg.libxcb
-      libpng
-      libpulseaudio
-      libvorbis
-      stdenv.cc.cc.lib
-      libkrb5
-      keyutils
-      gamescope
-      mangohud
-    ];
+    extraPkgs = pkgs:
+      with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        xorg.libxcb
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+        gamescope
+        mangohud
+      ];
   };
   monitor = lib.head (lib.filter (m: m.primary) config.monitors);
   steam-session = let
@@ -34,7 +39,7 @@ let
       "steam"
       "steam://open/bigpicture"
     ];
-  in 
+  in
     pkgs.writeTextDir "share/wayland-sessions/steam-session.desktop"
     ''
       [Desktop Entry]

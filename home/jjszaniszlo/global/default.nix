@@ -1,5 +1,10 @@
-{lib, config, outputs, ...} : {
-  imports = [] ++ (builtins.attrValues outputs.homeManagerModules);
+{
+  lib,
+  config,
+  outputs,
+  ...
+}: {
+  imports = builtins.attrValues outputs.homeManagerModules;
 
   home = {
     username = lib.mkDefault "jjszaniszlo";
