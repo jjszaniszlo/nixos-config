@@ -3,6 +3,7 @@
     ./global
     ./packages/cli
     ./packages/desktop/hyprland
+    ./packages/fonts
     ./packages/gaming
     ./packages/programs
   ];
