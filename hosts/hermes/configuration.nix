@@ -5,6 +5,7 @@
     ../common/global
     ../common/services/pipewire.nix
     ../common/services/printing.nix
+    ../common/services/steam-hardware.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
 
