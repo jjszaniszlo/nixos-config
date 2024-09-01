@@ -29,6 +29,9 @@
     graphics = {
       enable = true;
       steam-hardware.enable = true;
+    };
+    opengl = {
+      enable = true; 
       driSupport = true;
     };
   };
