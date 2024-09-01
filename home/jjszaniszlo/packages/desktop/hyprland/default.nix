@@ -22,7 +22,7 @@ in {
           }"
         ) (config.monitors);
 
-      "$terminal" = "wezterm";
+      "$terminal" = "kitty";
       "$menu" = "rofi -show drun -show-icons";
       exec-once = [
         "eww open & hyprpaper"
