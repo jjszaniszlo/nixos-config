@@ -1,12 +1,12 @@
 {inputs, ...}: {
   imports = [
+    ../common/desktop/hyprland.nix
     ../common/global
-    ./hardware-configuration.nix
-
     ../common/global
     ../common/services/pipewire.nix
     ../common/services/printing.nix
     ../common/users/jjszaniszlo
+    ./hardware-configuration.nix
 
     inputs.apple-silicon-support.nixosModules.default
   ];
