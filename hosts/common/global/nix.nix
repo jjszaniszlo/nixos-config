@@ -16,6 +16,7 @@ in {
       trusted-users = [
         "root"
         "@wheel"
+        "jjszaniszlo"
       ];
       warn-dirty = false;
       flake-registry = "";

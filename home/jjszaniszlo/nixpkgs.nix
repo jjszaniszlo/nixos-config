@@ -15,6 +15,7 @@ in {
       ];
       warn-dirty = false;
       flake-registry = "";
+      trusted-users = ["root" "jjszaniszlo"];
     };
     package = pkgs.nix;
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
