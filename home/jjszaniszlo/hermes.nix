@@ -4,6 +4,9 @@
     ./packages/cli
     ./packages/desktop/hyprland
     ./packages/fonts
+    ./packages/programs/vivaldi.nix
+    ./packages/programs/kitty.nix
+    ./packages/programs/neovim.nix
     # ./packages/programs
   ];
 
