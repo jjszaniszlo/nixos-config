@@ -5,7 +5,7 @@
     taps = [];
     brews = [];
     casks = [
-      "wezterm"
+      "kitty"
       "vivaldi"
       "desktoppr"
       "discord"
