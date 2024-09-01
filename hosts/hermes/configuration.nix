@@ -19,12 +19,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
 
-  hardware.asahi.peripheralFirmwareDirectory = ./firmware;
-
-  hardware.graphics = {
-    enable = true;
+  hardware = {
+    asahi = {
+      peripheralFirmwareDirectory = ./firmware;
+      useExperimentalGPUDriver	= true;
+      experimentalGPUInstallMode	= "replace";
+      withRust					= true;
+    };
+    graphics = {
+      enable = true;
+      steam-hardware.enable = true;
+      driSupport = true;
+    };
   };
-  hardware.steam-hardware.enable = true;
+
+  nixpkgs.overlays = [ inputs.apple-silicon-support.overlays.apple-silicon-overlay ];
 
   nix.gc.dates = "weekly";
 

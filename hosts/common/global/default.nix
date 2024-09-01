@@ -8,7 +8,6 @@ _: {
   ];
 
   nixpkgs = {
-    overlays = [];
     config = {
       allowUnfree = true;
     };
