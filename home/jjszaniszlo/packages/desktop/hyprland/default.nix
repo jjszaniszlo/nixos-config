@@ -9,8 +9,16 @@ in {
     ../common
   ];
 
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    MOZ_ENABLE_WAYLAND = 1;
+    GDK_BACKEND = "wayland";
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland.enable = true;
+    systemd.enable = true;
     settings = {
       monitor =
         [", highres, auto, 2"]
@@ -25,12 +33,8 @@ in {
       "$terminal" = "kitty";
       "$menu" = "rofi -show drun -show-icons";
       exec-once = [
-        "eww open & hyprpaper"
         ''${startup-script}/bin/start''
       ];
-      xwayland = {
-        force_zero_scaling = true;
-      };
       env = [
         "GDK_SCALE,1"
         "XCURSOR_SIZE,24"

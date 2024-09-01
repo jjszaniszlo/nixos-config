@@ -3,7 +3,6 @@
     ../common/desktop/hyprland.nix
     ../common/global
     ../common/global
-    ../common/services/pipewire.nix
     ../common/services/printing.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
@@ -19,20 +18,28 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
 
+  environment.variables.WLR_DRM_DEVICES = "/dev/dri/card0";
+
   hardware = {
     asahi = {
+      enable = true;
       peripheralFirmwareDirectory = ./firmware;
       useExperimentalGPUDriver = true;
-      experimentalGPUInstallMode = "replace";
+      experimentalGPUInstallMode = "overlay";
       withRust = true;
     };
     graphics = {
       enable = true;
     };
-    steam-hardware.enable = true;
   };
 
-  nixpkgs.overlays = [ inputs.apple-silicon-support.overlays.apple-silicon-overlay ];
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  programs.sway.enable = true;
+
+  services.logind.lidSwitch = "hibernate";
+
+  nixpkgs.overlays = [ inputs.apple-silicon-support.overlays.default ];
 
   nix.gc.dates = "weekly";
 
