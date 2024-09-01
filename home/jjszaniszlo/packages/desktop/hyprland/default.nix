@@ -19,6 +19,7 @@ in {
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+
     settings = {
       monitor =
         [", highres, auto, 2"]
