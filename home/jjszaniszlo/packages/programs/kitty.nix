@@ -4,7 +4,7 @@
     shellIntegration.enableZshIntegration = true;
     font = {
       name = "Victor Mono Nerd Font";
-      package = (pkgs.nerdfonts.override { fonts = [ "VictorMono" ]; });
+      package = pkgs.nerdfonts.override {fonts = ["VictorMono"];};
     };
     settings = {
       font_size = "20";

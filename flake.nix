@@ -9,6 +9,9 @@
     nixvim.url = "github:jjszaniszlo/nixvim-config";
     systems.url = "github:nix-systems/default";
 
+    # apple-silicon-support
+    apple-silicon-support = "github:tpwrules/nixos-apple-silicon";
+
     # alejandra
     alejandra = {
       url = "github:kamadorueda/alejandra/3.0.0";
@@ -77,6 +80,11 @@
       hera = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/hera/configuration.nix];
+      };
+      # m1-mbp 16"
+      hermes = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/hermes/configuration.nix];
       };
     };
 

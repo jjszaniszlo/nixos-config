@@ -1,14 +1,10 @@
-{
-  pkgs,
-  ...
-}: {
-  imports =
-    [
-      ./packages/cli
-      ./global
-      ./packages/programs/neovim.nix
-      ./packages/programs/wezterm.nix
-    ];
+{pkgs, ...}: {
+  imports = [
+    ./packages/cli
+    ./global
+    ./packages/programs/neovim.nix
+    ./packages/programs/wezterm.nix
+  ];
 
   home = {
     homeDirectory = "/Users/jjszaniszlo";
