@@ -1,4 +1,7 @@
 {
+  programs.kitty = {
+    enable = true;
+  };
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
