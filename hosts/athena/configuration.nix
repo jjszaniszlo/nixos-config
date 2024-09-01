@@ -3,6 +3,7 @@
 _: {
   imports = [
     ../common/desktop/hyprland.nix
+    ../common/desktop/sway.nix
     ../common/global
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix

@@ -1,18 +1,7 @@
-{pkgs, ...}: {
-  # portal
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-wlr
-    pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-hyprland
-  ];
-
-  # enable polkit
+_: {
+  imports = [ ../services/xserver.nix ];
   security.polkit.enable = true;
 
   # install programs
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  programs.hyprland.enable = true;
 }

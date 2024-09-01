@@ -1,6 +1,6 @@
 {inputs, ...}: {
   imports = [
-    ../common/desktop/hyprland.nix
+    ../common/desktop/sway.nix
     ../common/global
     ../common/global
     ../common/services/printing.nix
@@ -32,12 +32,6 @@
       enable = true;
     };
   };
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  programs.sway.enable = true;
-
-  services.logind.lidSwitch = "hibernate";
 
   nixpkgs.overlays = [ inputs.apple-silicon-support.overlays.default ];
 

@@ -9,12 +9,6 @@ in {
     ../common
   ];
 
-  home.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland";
-    MOZ_ENABLE_WAYLAND = 1;
-    GDK_BACKEND = "wayland";
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -160,9 +154,7 @@ in {
   };
 
   home.packages = with pkgs; [
-    eww
     dunst
-    swww
     rofi-wayland
     swaybg
   ];
