@@ -3,10 +3,10 @@
   fetchurl,
   stdenv,
   gtk3,
-  webkit2,
+  webkitgtk,
   squashfsTools,
   makeWrapper,
-  gnome3
+  zenity 
 } :
 let
   version = "0.22";
@@ -15,7 +15,7 @@ let
 
   deps = [
     gtk3
-    webkit2
+    webkitgtk
   ];
 in
 stdenv.mkDerivation {
@@ -35,6 +35,20 @@ stdenv.mkDerivation {
   unpackPhase = ''
     runHook preUnpack
     unsquashfs "$src" '/usr/share/icloud-for-linux' '/usr/bin/icloud-for-linux' '/meta/snap.yaml'
+    cd squashfs-root
+    if ! grep -q 'grade: stable' meta/snap.yaml; then
+      echo "The snap package is marked as unstable:"
+      grep 'grade: ' meta/snap.yaml
+      echo "You probably chose the wrong revision."
+      exit 1
+    fi
+    if ! grep -q '${version}' meta/snap.yaml; then
+      echo "Package version differs from version found in snap metadata:"
+      grep 'version: ' meta/snap.yaml
+      echo "While the nix package specifies: ${version}."
+      echo "You probably chose the wrong revision or forgot to update the nix version."
+      exit 1
+    fi
     runHook postUnpack
   '';
 
@@ -47,17 +61,11 @@ stdenv.mkDerivation {
 
     cp meta/snap.yaml $out
 
-    rpath="$out/share/icloud-for-linux:$libdir"
-
-    patchelf \
-        --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-        --set-rpath $rpath $out/share/icloud-for-linux/icloud-for-linux
-
     librarypath="${lib.makeLibraryPath deps}:$libdir"
 
-    wrapProgram $out/share/icloud-for-linux/icloud-for-linux \
+    wrapProgram $out/share/icloud-for-linux \
       --prefix LD_LIBRARY_PATH : "$librarypath" \
-      -prefix PATH : "${gnome3.zenity}/bin"
+      --prefix PATH : "${zenity}/bin"
 
     mkdir -p "$out/share/applications/"
     cp "$out/share/icloud-for-linux/icloud-for-linux.desktop" "$out/share/applications/"
