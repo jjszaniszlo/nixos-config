@@ -5,7 +5,6 @@
     ../common/global
     ../common/services/pipewire.nix
     ../common/services/printing.nix
-    ../common/services/steam-hardware.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
 
@@ -21,6 +20,11 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
+
+  hardware.graphics = {
+    enable = true;
+  };
+  hardware.steam-hardware.enable = true;
 
   nix.gc.dates = "weekly";
 
