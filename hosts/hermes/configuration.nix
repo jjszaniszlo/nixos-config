@@ -22,18 +22,14 @@
   hardware = {
     asahi = {
       peripheralFirmwareDirectory = ./firmware;
-      useExperimentalGPUDriver	= true;
-      experimentalGPUInstallMode	= "replace";
-      withRust					= true;
+      useExperimentalGPUDriver = true;
+      experimentalGPUInstallMode = "replace";
+      withRust = true;
     };
     graphics = {
       enable = true;
-      steam-hardware.enable = true;
     };
-    opengl = {
-      enable = true; 
-      driSupport = true;
-    };
+    steam-hardware.enable = true;
   };
 
   nixpkgs.overlays = [ inputs.apple-silicon-support.overlays.apple-silicon-overlay ];
