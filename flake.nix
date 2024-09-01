@@ -110,6 +110,13 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./home/jjszaniszlo/poseidon.nix ./home/jjszaniszlo/nixpkgs.nix];
       };
+
+      # 16" mbp m1 pro home (NixOS)
+      "jjszaniszlo@hermes" = lib.homeManagerConfiguration {
+        pkgs = pkgsFor.aarch64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./home/jjszaniszlo/hermes.nix ./home/jjszaniszlo/nixpkgs.nix];
+      };
     };
   };
 }
