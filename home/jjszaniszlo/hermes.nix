@@ -4,7 +4,7 @@
     ./packages/cli
     ./packages/desktop/hyprland
     ./packages/fonts
-    ./packages/programs
+    # ./packages/programs
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
