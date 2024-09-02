@@ -6,6 +6,6 @@
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.stable.hyprland;
+    package = pkgs.hyprland;
   };
 }

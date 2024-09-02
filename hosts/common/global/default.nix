@@ -1,4 +1,4 @@
-_: {
+{outputs, ...}: {
   imports = [
     ./alejandra.nix
     ./locale.nix
@@ -8,6 +8,7 @@ _: {
   ];
 
   nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
     };
