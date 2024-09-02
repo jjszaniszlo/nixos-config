@@ -3,7 +3,9 @@
     ../common/wayland
   ];
 
-  programs.sway = {
+  wayland.windowManager.sway = {
     enable = true;
+    xwayland = true;
+    systemd.enable = true;
   };
 }
