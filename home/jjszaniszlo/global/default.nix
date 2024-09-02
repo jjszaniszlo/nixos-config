@@ -1,10 +1,14 @@
 {
   lib,
   config,
+  inputs,
   outputs,
   ...
 }: {
-  imports = builtins.attrValues outputs.homeManagerModules;
+  imports = [
+    builtins.attrValues outputs.homeManagerModules
+    inputs.nix-colors.homeManagerModule
+  ];
 
   home = {
     username = lib.mkDefault "jjszaniszlo";

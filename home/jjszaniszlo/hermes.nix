@@ -11,7 +11,7 @@
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
-  
+
   monitors = [];
 
   systemd.user.startServices = "sd-switch";

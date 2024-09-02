@@ -33,7 +33,7 @@
     };
   };
 
-  nixpkgs.overlays = [ inputs.apple-silicon-support.overlays.default ];
+  nixpkgs.overlays = [inputs.apple-silicon-support.overlays.default];
 
   nix.gc.dates = "weekly";
 

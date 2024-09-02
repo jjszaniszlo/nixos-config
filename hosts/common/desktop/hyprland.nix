@@ -1,8 +1,11 @@
-_: {
-  imports = [ 
+{pkgs, ...} : {
+  imports = [
     ./common
     ./common/xserver.nix
   ];
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.stable.hyprland;
+  };
 }
