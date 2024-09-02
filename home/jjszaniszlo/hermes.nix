@@ -7,7 +7,7 @@
     ./packages/programs/vivaldi.nix
     ./packages/programs/kitty.nix
     ./packages/programs/neovim.nix
-    ./packages/programs/discord.nix
+    ./packages/programs/obsidian.nix
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;

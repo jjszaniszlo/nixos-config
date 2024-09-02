@@ -1,4 +1,8 @@
 {
-  imports = [ ../services/xserver.nix ];
+  imports = [
+    ./common
+    ./common/xserver.nix
+  ];
+
   programs.sway.enable = true;
 }

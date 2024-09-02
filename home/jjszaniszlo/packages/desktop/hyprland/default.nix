@@ -6,7 +6,7 @@
   startup-script = pkgs.pkgs.writeShellScriptBin "start" '''';
 in {
   imports = [
-    ../common
+    ../common/wayland
   ];
 
   wayland.windowManager.hyprland = {

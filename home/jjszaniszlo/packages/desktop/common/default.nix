@@ -1,5 +1,1 @@
-{...}: {
-  imports = [
-    ./wayland-window-manager
-  ];
-}
+_: {}

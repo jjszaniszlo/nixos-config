@@ -1,5 +1,9 @@
-{
+{...}: {
   imports = [
-    ../common
+    ../common/wayland
   ];
+
+  programs.sway = {
+    enable = true;
+  };
 }

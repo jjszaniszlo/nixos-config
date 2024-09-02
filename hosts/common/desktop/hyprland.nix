@@ -1,7 +1,8 @@
 _: {
-  imports = [ ../services/xserver.nix ];
-  security.polkit.enable = true;
+  imports = [ 
+    ./common
+    ./common/xserver.nix
+  ];
 
-  # install programs
   programs.hyprland.enable = true;
 }
