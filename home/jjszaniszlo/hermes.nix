@@ -2,12 +2,12 @@
   imports = [
     ./global
     ./packages/cli
-    ./packages/desktop/hyprland
+    ./packages/desktop/sway
     ./packages/fonts
     ./packages/programs/vivaldi.nix
     ./packages/programs/kitty.nix
     ./packages/programs/neovim.nix
-    # ./packages/programs
+    ./packages/programs/discord.nix
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
