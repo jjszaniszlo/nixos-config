@@ -54,6 +54,7 @@
         swayosd-client = "${pkgs.swayosd}/bin/swayosd-client";
       in {
         "${super}+Return" = "exec ${defaultApp "x-scheme-handler/terminal"}";
+        "${super}+b" = "exec ${defaultApp "x-scheme-handler/https"}";
         "${super}+q" = "kill";
         "${alt}+Space" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons";
 

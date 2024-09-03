@@ -1,6 +1,10 @@
-{
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-
-  services.logind.lidSwitch = "hibernate";
+{pkgs, ...}: {
+  services = {
+    xserver.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      theme = pkgs.sonoma-sddm-theme; 
+    };
+    logind.lidSwitch = "hibernate";
+  };
 }

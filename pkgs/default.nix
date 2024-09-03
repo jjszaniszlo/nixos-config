@@ -1,4 +1,4 @@
 {pkgs ? import <nixpkgs> {}, ...}: {
   wallpapers = import ./wallpapers {inherit pkgs;};
-  icloud-for-linux = pkgs.callPackage ./icloud-for-linux {};
+  sonoma-sddm-theme = import ./sonoma-sddm-theme {inherit pkgs;};
 }
