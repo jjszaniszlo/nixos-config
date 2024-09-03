@@ -1,5 +1,6 @@
 {inputs, ...}: {
   imports = [
+    ../common/desktop/sddm.nix
     ../common/desktop/sway.nix
     ../common/global
     ../common/global
