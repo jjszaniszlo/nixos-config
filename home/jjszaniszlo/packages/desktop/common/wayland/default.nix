@@ -4,6 +4,7 @@
     ./xdg_portal.nix
   ];
 
+  xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
     wl-clipboard
   ];

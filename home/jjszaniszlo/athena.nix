@@ -17,7 +17,7 @@
       width = 3840;
       height = 2160;
       refresh-rate = 120;
-      workspace = "1";
+      workspaces = [1 2 3 7 8 9 0];
       primary = true;
     }
     {
@@ -30,7 +30,7 @@
         enable = true;
         value = 3;
       };
-      workspace = "2";
+      workspaces = [4 5 6];
     }
   ];
 

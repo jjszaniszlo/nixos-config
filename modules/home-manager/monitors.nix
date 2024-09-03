@@ -37,9 +37,9 @@ in {
             type = types.bool;
             default = true;
           };
-          workspace = mkOption {
-            type = types.nullOr types.str;
-            default = null;
+          workspaces = mkOption {
+            type = with types; listOf int;
+            default = [1 2 3 4 5 6 7 8 9 0];
           };
           transform = mkOption {
             type = types.attrs;
