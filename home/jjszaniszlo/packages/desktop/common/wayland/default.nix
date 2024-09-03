@@ -3,6 +3,8 @@
     ./screenshot.nix
     ./xdg_portal.nix
   ];
+  
+  services.swayosd.enable = true;
 
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [

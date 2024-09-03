@@ -42,7 +42,7 @@
         }) (config.monitors))
       );
 
-      workspaceOutputAssign = {};
+      workspaceOutputAssign = [];
 
       input = {
         "type:keyboard" = {
@@ -84,6 +84,8 @@
         # exit sway
         "${super}+m" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
+        # ", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        # ", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         XF86AudioRaiseVolume = "exec swayosd-client --output-volume raise";
         XF86AudioLowerVolume = "exec swayosd-client --output-volume lower";
         XF86AudioMute = "exec swayosd-client --output-volume mute-toggle";
