@@ -2,6 +2,7 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 _: {
   imports = [
+    ../common/desktop/sddm.nix
     ../common/desktop/hyprland.nix
     ../common/desktop/sway.nix
     ../common/global

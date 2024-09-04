@@ -50,8 +50,11 @@
         };
       };
 
-      keybindings = {
+      keybindings = let
+        swayosd-client = "${pkgs.swayosd}/bin/swayosd-client";
+      in {
         "${super}+Return" = "exec ${defaultApp "x-scheme-handler/terminal"}";
+        "${super}+b" = "exec ${defaultApp "x-scheme-handler/https"}";
         "${super}+q" = "kill";
         "${alt}+Space" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons";
 
@@ -79,19 +82,17 @@
         "${super}+Shift+7" = "move container to workspace 7";
         "${super}+Shift+8" = "move container to workspace 8";
         "${super}+Shift+9" = "move container to workspace 9";
-        "${super}+Shift+0" = "move container to workspace 0";
+        "${super}+Shift+0" = "move container to workspace 10";
 
         # exit sway
         "${super}+m" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
-        # ", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        # ", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        XF86AudioRaiseVolume = "exec swayosd-client --output-volume raise";
-        XF86AudioLowerVolume = "exec swayosd-client --output-volume lower";
-        XF86AudioMute = "exec swayosd-client --output-volume mute-toggle";
-        XF86AudioMicMute = "exec swayosd-client --input-volume mute-toggle";
-        XF86MonBrightnessUp = "exec swayosd-client --brightness raise";
-        XF86MonBrightnessDown = "exec swayosd-client --brightness lower";
+        XF86AudioRaiseVolume = "exec ${swayosd-client} --output-volume raise";
+        XF86AudioLowerVolume = "exec ${swayosd-client} --output-volume lower";
+        XF86AudioMute = "exec ${swayosd-client} --output-volume mute-toggle";
+        XF86AudioMicMute = "exec ${swayosd-client} --input-volume mute-toggle";
+        XF86MonBrightnessUp = "exec ${swayosd-client} --brightness raise";
+        XF86MonBrightnessDown = "exec ${swayosd-client} --brightness lower";
       };
 
       window.titlebar = false;

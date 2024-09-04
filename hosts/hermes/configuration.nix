@@ -1,5 +1,6 @@
 {inputs, outputs, ...}: {
   imports = [
+    ../common/desktop/sddm.nix
     ../common/desktop/sway.nix
     ../common/global/alejandra.nix
     ../common/global/locale.nix

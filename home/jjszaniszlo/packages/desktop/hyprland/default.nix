@@ -155,7 +155,6 @@ in {
 
   home.packages = with pkgs; [
     dunst
-    rofi-wayland
     swaybg
   ];
 }

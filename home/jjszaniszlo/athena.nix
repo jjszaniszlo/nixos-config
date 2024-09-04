@@ -2,6 +2,7 @@
   imports = [
     ./global
     ./packages/cli
+    ./packages/desktop/common/gtk.nix
     ./packages/desktop/hyprland
     ./packages/desktop/sway
     ./packages/fonts
