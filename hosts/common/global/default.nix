@@ -1,4 +1,4 @@
-{inputs, outputs, ...}: {
+_: {
   imports = [
     ./alejandra.nix
     ./locale.nix
@@ -7,11 +7,6 @@
     ./openssh.nix
     ./zsh.nix
   ];
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
-  };
 
   hardware.enableRedistributableFirmware = true;
 }

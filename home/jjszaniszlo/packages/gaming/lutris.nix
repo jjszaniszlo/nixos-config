@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   lutris = let
-    hackedPkgs = pkgs.stable.extend (final: prev: {
+    hackedPkgs = pkgs.extend (final: prev: {
       buildFHSEnv = args:
         prev.buildFHSEnv (args
         // {
