@@ -1,4 +1,12 @@
 {inputs, outputs, ...}: {
+  imports = [
+    ./alejandra.nix
+    ./locale.nix
+    ./nix.nix
+    ./nixpkgs.nix
+    ./openssh.nix
+    ./zsh.nix
+  ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {
@@ -6,11 +14,4 @@
   };
 
   hardware.enableRedistributableFirmware = true;
-
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-    };
-  };
 }
