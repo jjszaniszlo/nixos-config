@@ -1,16 +1,18 @@
-{pkgs, ...}: {
+{pkgs, nix-colors, ...}: {
   imports = [
     ./global
     ./packages/cli
     ./packages/desktop/common/gtk.nix
-    ./packages/desktop/hyprland
     ./packages/desktop/sway
     ./packages/fonts
     ./packages/gaming
     ./packages/programs
+
+    nix-colors.homeManagerModules.default
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
+  colorScheme = nix-colors.colorSchemes.kanagawa;
 
   monitors = [
     {

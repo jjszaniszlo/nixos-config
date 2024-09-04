@@ -5,7 +5,7 @@
     # Nixpkgs
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixvim.url = "github:jjszaniszlo/nixvim-config";
     systems.url = "github:nix-systems/default";
@@ -54,6 +54,7 @@
     systems,
     nix-darwin,
     home-manager,
+    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -79,7 +80,7 @@
       # main desktop
       athena = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/athena/configuration.nix];
+        modules = [ ./hosts/athena/configuration.nix ];
       };
       # raspberry pi 4
       hera = lib.nixosSystem {
@@ -106,20 +107,20 @@
       # main desktop home
       "jjszaniszlo@athena" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs nix-colors;};
         modules = [./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix];
       };
       # 16" mbp m1 pro home
       "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs nix-colors;};
         modules = [./home/jjszaniszlo/poseidon.nix ./home/jjszaniszlo/nixpkgs.nix];
       };
 
       # 16" mbp m1 pro home (NixOS)
       "jjszaniszlo@hermes" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs nix-colors;};
         modules = [./home/jjszaniszlo/hermes.nix ./home/jjszaniszlo/nixpkgs.nix];
       };
     };
