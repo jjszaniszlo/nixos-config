@@ -28,9 +28,9 @@
     asahi = {
       enable = true;
       peripheralFirmwareDirectory = ./firmware;
-      useExperimentalGPUDriver = true;
-      experimentalGPUInstallMode = "overlay";
-      withRust = true;
+      # useExperimentalGPUDriver = true;
+      # experimentalGPUInstallMode = "overlay";
+      # withRust = true;
     };
     graphics = {
       enable = true;

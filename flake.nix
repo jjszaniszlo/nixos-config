@@ -3,18 +3,13 @@
 
   inputs = {
     # Nixpkgs
+    apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixvim.url = "github:jjszaniszlo/nixvim-config";
     systems.url = "github:nix-systems/default";
-
-    # apple-silicon-support
-    apple-silicon-support = {
-      url = "github:tpwrules/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # alejandra
     alejandra = {
