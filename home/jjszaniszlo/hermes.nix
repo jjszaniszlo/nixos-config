@@ -4,10 +4,10 @@
     ./packages/cli
     ./packages/desktop/sway
     ./packages/fonts
-    ./packages/programs/vivaldi.nix
+    ./packages/programs/armcord.nix
     ./packages/programs/kitty.nix
     ./packages/programs/neovim.nix
-    ./packages/programs/obsidian.nix
+    ./packages/programs/vivaldi.nix
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;

@@ -11,7 +11,7 @@
     systems.url = "github:nix-systems/default";
 
     apple-silicon-support = {
-      url = "github:tpwrules/nixos-apple-silicon";
+      url = "github:tpwrules/nixos-apple-silicon/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
