@@ -2,6 +2,7 @@
   imports = [
     ./screenshot.nix
     ./xdg_portal.nix
+    ./rofi.nix
   ];
   
   services.swayosd.enable = true;
