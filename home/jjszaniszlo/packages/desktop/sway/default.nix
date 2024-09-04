@@ -8,6 +8,8 @@
     ../common/wayland
   ];
 
+  xdg.portal.config.sway.default = [ "gtk" "wlr" ];
+
   wayland.windowManager.sway = {
     enable = true;
     xwayland = true;
@@ -21,7 +23,7 @@
       modifier = alt;
 
       terminal = "${defaultApp "x-scheme-handler/terminal"}";
-      menu = "${pkgs.rofi}/bin/rofi -show drun -show-icons";
+      menu = ''${pkgs.rofi}/bin/rofi -modi run, drun, window  -show drun'';
 
       output = (
         builtins.listToAttrs
@@ -56,7 +58,7 @@
         "${super}+Return" = "exec ${defaultApp "x-scheme-handler/terminal"}";
         "${super}+b" = "exec ${defaultApp "x-scheme-handler/https"}";
         "${super}+q" = "kill";
-        "${alt}+Space" = "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons";
+        "${alt}+Space" = ''exec ${pkgs.rofi}/bin/rofi -show drun -show-icons -p ">"'';
 
         "${super}+Shift+c" = "reload";
 

@@ -9,6 +9,12 @@ in {
     ../common/wayland
   ];
 
+  xdg.portal.config.hyprland.default = [ "gtk" "hyprland" ];
+  xdg.portal.extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;

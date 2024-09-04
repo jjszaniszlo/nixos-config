@@ -4,14 +4,13 @@
   config,
   ...
 }: let
-  steam-with-extras = pkgs.steam.override {
+  steam-with-pkgs = pkgs.steam.override {
     extraPkgs = pkgs:
       with pkgs; [
         xorg.libXcursor
         xorg.libXi
         xorg.libXinerama
         xorg.libXScrnSaver
-        xorg.libxcb
         libpng
         libpulseaudio
         libvorbis
@@ -22,6 +21,7 @@
         mangohud
       ];
   };
+
   monitor = lib.head (lib.filter (m: m.primary) config.monitors);
   steam-session = let
     gamescope = lib.concatStringsSep " " [
@@ -40,7 +40,7 @@
       "steam://open/bigpicture"
     ];
   in
-    pkgs.writeTextDir "share/wayland-sessions/steam-session.desktop"
+    pkgs.writeTextDir "share/wayland-sessions/steam-sesson.desktop"
     ''
       [Desktop Entry]
       Name=Steam Session
@@ -48,11 +48,11 @@
       Type=Application
     '';
 in {
-  home.packages = with pkgs; [
-    steam-with-extras
+  home.packages = [
+    steam-with-pkgs
     steam-session
-    gamescope
-    mangohud
-    protontricks
+    pkgs.gamescope
+    pkgs.mangohud
+    pkgs.protontricks
   ];
 }

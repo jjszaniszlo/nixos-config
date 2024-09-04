@@ -1,9 +1,9 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-_: {
+{pkgs, ...} : {
   imports = [
+    ../common/desktop/common
     ../common/desktop/sddm.nix
-    ../common/desktop/hyprland.nix
     ../common/desktop/sway.nix
     ../common/global
     ../common/services/coolercontrol.nix
@@ -22,6 +22,14 @@ _: {
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+
+    extraPackages = [ pkgs.amdvlk ];
+    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+  };
 
   networking = {
     hostName = "athena";

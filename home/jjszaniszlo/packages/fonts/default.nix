@@ -12,6 +12,6 @@
   home.packages = with pkgs; [
     ubuntu_font_family
     liberation_ttf
-    (nerdfonts.override {fonts = ["VictorMono"];})
+    (nerdfonts.override {fonts = ["VictorMono" "FiraCode"];})
   ];
 }
