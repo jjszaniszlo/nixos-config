@@ -5,6 +5,7 @@
     # Nixpkgs
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
+    nixpkgs-master.url ="github:nixos/nixpkgs/master"; 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixvim.url = "github:jjszaniszlo/nixvim-config";

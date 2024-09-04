@@ -2,11 +2,13 @@
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
+    package = pkgs.master.kitty;
     font = {
-      name = "Victor Mono Nerd Font";
+      name = "VictorMono Nerd Font";
       package = pkgs.nerdfonts.override {fonts = ["VictorMono"];};
     };
     settings = {
+      # font_family = "VictorMono Nerd Font";
       font_size = "20";
 
       background_image = "${pkgs.wallpapers.sci-fi-city}";
