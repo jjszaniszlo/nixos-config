@@ -1,8 +1,11 @@
-{inputs, ...}: {
+{inputs, outputs, ...}: {
   imports = [
     ../common/desktop/sway.nix
-    ../common/global
-    ../common/global
+    ../common/global/alejandra.nix
+    ../common/global/locale.nix
+    ../common/global/nix.nix
+    ../common/global/openssh.nix
+    ../common/global/zsh.nix
     ../common/services/printing.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
@@ -33,7 +36,14 @@
     };
   };
 
-  nixpkgs.overlays = [inputs.apple-silicon-support.overlays.default];
+  nixpkgs = {
+    overlays =
+      (builtins.attrValues outputs.overlays)
+      ++ [inputs.apple-silicon-support.overlays.default];
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   nix.gc.dates = "weekly";
 

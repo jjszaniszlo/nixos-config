@@ -1,16 +1,10 @@
-{outputs, ...}: {
+{...}: {
   imports = [
     ./alejandra.nix
     ./locale.nix
     ./nix.nix
+    ./nixpkgs.nix
     ./zsh.nix
     ./openssh.nix
   ];
-
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-    };
-  };
 }
