@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   fonts = {
     fontconfig = {
-      enable = true;
-      defaultFonts = {
-        serif = ["Liberation Serif"];
-        sansSerif = ["Ubuntu"];
-        monospace = ["Victor Mono Nerd Font"];
-      };
+      # enable = true;
+      # defaultFonts = {
+      #   serif = ["Liberation Serif"];
+      #   sansSerif = ["Ubuntu"];
+      #   monospace = ["Victor Mono Nerd Font"];
+      # };
     };
   };
   home.packages = with pkgs; [

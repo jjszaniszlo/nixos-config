@@ -2,8 +2,9 @@
   imports = [
     ./packages/cli
     ./global
+    ./packages/fonts
     ./packages/programs/neovim.nix
-    ./packages/programs/wezterm.nix
+    ./packages/programs/kitty.nix
   ];
 
   home = {
