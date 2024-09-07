@@ -5,13 +5,13 @@
     ../common/desktop/common
     ../common/desktop/sddm.nix
     ../common/desktop/hyprland.nix
+    ../common/gaming
     ../common/global
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix
     ../common/services/lanzaboote.nix
     ../common/services/pipewire.nix
     ../common/services/printing.nix
-    ../common/services/steam-hardware.nix
     ../common/services/systemd-boot.nix
     ../common/users/jjszaniszlo
     ./hardware-configuration.nix
