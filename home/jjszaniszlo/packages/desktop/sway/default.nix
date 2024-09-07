@@ -33,6 +33,7 @@
             {
               bg = "${config.wallpaper} fill";
               mode = "${toString m.width}x${toString m.height}@${toString m.refresh-rate}Hz";
+              pos = "${lib.strings.stringAsChars (x: if x == "x" then " " else x) m.position}";
             }
             // (
               if m.transform.enable

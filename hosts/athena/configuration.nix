@@ -36,6 +36,14 @@
     networkmanager.enable = true;
   };
 
+  boot.kernelModules = [
+    "kvm-amd"
+    "usbhid"
+    "xhci_pci"
+    "ehci_pci"
+    "sdhci_pci"
+  ];
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
 }

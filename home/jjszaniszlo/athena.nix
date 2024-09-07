@@ -28,7 +28,7 @@
       width = 2560;
       height = 1440;
       refresh-rate = 165;
-      position = "auto-right";
+      position = "3840x0";
       transform = {
         enable = true;
         value = 3;
