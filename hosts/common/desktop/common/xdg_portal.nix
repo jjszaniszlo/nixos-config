@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   xdg.portal = {
     enable = true;
-    xdgopenuseportal = true;
+    xdgOpenUsePortal = true;
 
     config.common.default = [ "gtk" "wlr" ];
 

@@ -19,10 +19,6 @@
 
   nix.gc.dates = "weekly";
 
-  boot.binfmt.emulatedSystems = [
-    "aarch64-linux"
-  ];
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -36,13 +32,7 @@
     networkmanager.enable = true;
   };
 
-  boot.kernelModules = [
-    "kvm-amd"
-    "usbhid"
-    "xhci_pci"
-    "ehci_pci"
-    "sdhci_pci"
-  ];
+  boot.kernelModules = [ "kvm-amd" ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";
