@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   xdg.portal = {
     enable = true;
-    xdgopenuseportal = true;
+    xdgOpenUsePortal = true;
 
     config.common.default = [ "gtk" "wlr" ];
 
-    extraportals = [
+    extraPortals = [
       pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];

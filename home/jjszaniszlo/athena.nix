@@ -3,7 +3,7 @@
     ./global
     ./packages/cli
     ./packages/desktop/common/gtk.nix
-    ./packages/desktop/sway
+    ./packages/desktop/hyprland
     ./packages/fonts
     ./packages/gaming
     ./packages/programs

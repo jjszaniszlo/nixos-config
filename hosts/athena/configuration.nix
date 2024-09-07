@@ -4,7 +4,7 @@
   imports = [
     ../common/desktop/common
     ../common/desktop/sddm.nix
-    ../common/desktop/sway.nix
+    ../common/desktop/hyprland.nix
     ../common/global
     ../common/services/coolercontrol.nix
     ../common/services/lact.nix
