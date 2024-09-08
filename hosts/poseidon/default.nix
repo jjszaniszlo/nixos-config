@@ -21,6 +21,8 @@
     Weekday = 7;
   };
 
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+
   environment.systemPackages = with pkgs; [
     defaultbrowser
   ];

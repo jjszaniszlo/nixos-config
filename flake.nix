@@ -80,17 +80,17 @@
       # main desktop
       athena = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [ ./hosts/athena/configuration.nix ];
+        modules = [ ./hosts/athena ];
       };
       # raspberry pi 4
       hera = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/hera/configuration.nix];
+        modules = [ ./hosts/hera ];
       };
       # m1-mbp 16"
       hermes = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/hermes/configuration.nix];
+        modules = [ ./hosts/hermes ];
       };
     };
 
@@ -99,7 +99,7 @@
       poseidon = lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/poseidon/configuration.nix];
+        modules = [ ./hosts/poseidon ];
       };
     };
 
