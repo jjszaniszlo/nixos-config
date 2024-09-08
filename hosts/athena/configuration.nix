@@ -1,39 +1,27 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{pkgs, ...} : {
+{inputs, ...} : {
   imports = [
-    ../common/desktop/common
-    ../common/desktop/sddm.nix
-    ../common/desktop/hyprland.nix
-    ../common/gaming
     ../common/global
-    ../common/services/coolercontrol.nix
-    ../common/services/lact.nix
-    ../common/services/lanzaboote.nix
-    ../common/services/pipewire.nix
-    ../common/services/printing.nix
-    ../common/services/systemd-boot.nix
+    ../common/optional/services/delete_root.nix
+    ../common/services
     ../common/users/jjszaniszlo
+
     ./hardware-configuration.nix
-  ];
+  ]
+  ++ inputs.impermanence.nixosModules.impermanence
+  ++ inputs.disko.nixosModules.default
+  ++ (import ./disko.nix { device = "/dev/nvme0n1"; });
 
-  nix.gc.dates = "weekly";
+  programs.fuse.userAllowOther = true;
+  users.users.jjszaniszlo.initialPassword = "1234";
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-
-    extraPackages = [ pkgs.amdvlk ];
-    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+  fileSystems."/persist".neededForBoot = true;
+  environment.persistence."/persist/system" = {
+    hideMounts = true;
+    directories = [
+      "/etc/nixos"
+    ];
   };
 
-  networking = {
-    hostName = "athena";
-    networkmanager.enable = true;
-  };
-
-  boot.kernelModules = [ "kvm-amd" ];
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  networking.hostName = "athena";
   system.stateVersion = "24.05";
 }

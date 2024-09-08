@@ -11,12 +11,12 @@ in {
     enable = true;
     settings = {
       PasswordAuthentication = true;
-      # PermitRootLogin = "no";
+      PermitRootLogin = "no";
 
-      # StreamLocalBindUnlink = "yes";
-      # GatewayPorts = "clientspecified";
-      # AcceptEnv = "WAYLAND_DISPLAY";
-      # X11Forwarding = true;
+      StreamLocalBindUnlink = "yes";
+      GatewayPorts = "clientspecified";
+      AcceptEnv = "WAYLAND_DISPLAY";
+      X11Forwarding = true;
     };
   };
 }

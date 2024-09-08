@@ -8,7 +8,6 @@
     nixpkgs-master.url ="github:nixos/nixpkgs/master"; 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixvim.url = "github:jjszaniszlo/nixvim-config";
     systems.url = "github:nix-systems/default";
 
     apple-silicon-support = {
@@ -16,31 +15,41 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # alejandra
     alejandra = {
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home manager
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # lanzaboote
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-darwin
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # sops
+    nixvim = {
+      url = "github:jjszaniszlo/nixvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

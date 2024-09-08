@@ -7,6 +7,4 @@ _: {
     ./openssh.nix
     ./zsh.nix
   ];
-
-  hardware.enableRedistributableFirmware = true;
 }
