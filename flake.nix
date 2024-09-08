@@ -82,10 +82,19 @@
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
 
     nixosConfigurations = {
-      # main desktop
+      # main desktop (use home manager as nixos module for impermanence)
       athena = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [ ./hosts/athena/configuration.nix ];
+        modules = [
+          ./hosts/athena/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jjszaniszlo = import ./home/jjszaniszlo/athena.nix;
+            extraSpecialArgs = { inherit inputs outputs nix-colors; };
+          }
+        ];
       };
       # raspberry pi 4
       hera = lib.nixosSystem {

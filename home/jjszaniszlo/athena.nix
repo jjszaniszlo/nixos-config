@@ -3,6 +3,7 @@
     ./global
     ./global/persistence.nix
     ./packages/cli
+    ./nixpkgs.nix
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
