@@ -92,6 +92,11 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/hermes/configuration.nix];
       };
+
+      isoimage = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/isoimage/configuration.nix];
+      };
     };
 
     darwinConfigurations = {
