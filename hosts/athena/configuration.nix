@@ -7,9 +7,9 @@
 
     ./hardware-configuration.nix
   ]
-  ++ inputs.impermanence.nixosModules.impermanence
-  ++ inputs.disko.nixosModules.default
-  ++ (import ./disko.nix { device = "/dev/nvme0n1"; });
+  ++ [inputs.disko.nixosModules.default]
+  ++ [(import ./disko.nix { device = "/dev/nvme0n1"; })]
+  ++ [inputs.impermanence.nixosModules.impermanence];
 
   programs.fuse.userAllowOther = true;
   users.users.jjszaniszlo.initialPassword = "1234";
@@ -19,6 +19,11 @@
     hideMounts = true;
     directories = [
       "/etc/nixos"
+      "/var/log"
+      "/var/lib/bluetooth"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/etc/NetworkManager/system-connections"
     ];
   };
 
