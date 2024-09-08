@@ -4,9 +4,7 @@
     ./global/persistence.nix
     ./packages/cli
     ./packages/desktop/sway
-    ./packages/programs/kitty.nix
-    ./packages/programs/vivaldi.nix
-    ./packages/programs/armcord.nix
+    ./packages/programs
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;

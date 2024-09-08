@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   home.packages = with pkgs; [
     vivaldi
   ];
@@ -8,5 +8,13 @@
     "text/xml" = ["vivaldi.desktop"];
     "x-scheme-handler/http" = ["vivaldi.desktop"];
     "x-scheme-handler/https" = ["vivaldi.desktop"];
+  };
+
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}" = {
+      directories = [
+        ".config/vivaldi"
+      ];
+    };
   };
 }
