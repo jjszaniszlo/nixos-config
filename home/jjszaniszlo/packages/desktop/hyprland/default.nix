@@ -7,12 +7,12 @@
 in {
   imports = [
     ../common/wayland
+    ../common
   ];
 
   xdg.portal.config.hyprland.default = [ "gtk" "hyprland" ];
   xdg.portal.extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-hyprland
   ];
 
   wayland.windowManager.hyprland = {

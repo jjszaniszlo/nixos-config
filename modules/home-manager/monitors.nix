@@ -31,7 +31,7 @@ in {
           };
           position = mkOption {
             type = types.str;
-            default = "auto";
+            default = "0x0";
           };
           enabled = mkOption {
             type = types.bool;

@@ -6,14 +6,20 @@
 }: {
   imports = [
     ../common/wayland
+    ../common
   ];
 
-  xdg.portal.config.sway.default = [ "gtk" "wlr" ];
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_DESKTOP = "sway";
+    XDG_SESSION_TYPE = "wayland";
+  };
 
   wayland.windowManager.sway = {
     enable = true;
     xwayland = true;
     systemd.enable = true;
+    package = null;
 
     config = let
       super = "Mod4";
@@ -33,6 +39,7 @@
             {
               bg = "${config.wallpaper} fill";
               mode = "${toString m.width}x${toString m.height}@${toString m.refresh-rate}Hz";
+              pos = "${lib.strings.stringAsChars (x: if x == "x" then " " else x) m.position}";
             }
             // (
               if m.transform.enable
@@ -100,4 +107,12 @@
       window.titlebar = false;
     };
   };
+
+  xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
+    [screencast]
+    output_name=
+    max_fps=30
+    chooser_cmd=${pkgs.slurp}/bin/slurp -f %o -or
+    chooser_type=simple
+  '';
 }
