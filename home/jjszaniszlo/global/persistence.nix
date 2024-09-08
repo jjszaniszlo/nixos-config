@@ -11,6 +11,7 @@
         "Development"
         ".ssh"
         ".local/bin"
+        ".nixos-config"
         { 
           directory = ".local/share/Steam";
           method = "symlink";
