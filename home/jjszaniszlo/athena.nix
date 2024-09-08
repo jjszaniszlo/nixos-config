@@ -2,13 +2,6 @@
   imports = [
     ./global
     ./packages/cli
-    ./packages/desktop/common/gtk.nix
-    ./packages/desktop/hyprland
-    ./packages/fonts
-    ./packages/gaming
-    ./packages/programs
-
-    nix-colors.homeManagerModules.default
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
@@ -36,6 +29,4 @@
       workspaces = [4 5 6];
     }
   ];
-
-  systemd.user.startServices = "sd-switch";
 }
