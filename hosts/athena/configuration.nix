@@ -15,13 +15,15 @@
   users.users.jjszaniszlo.initialPassword = "1234";
 
   fileSystems."/persist".neededForBoot = true;
-  environment.persistence."/persist/system" = {
+  environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
       "/etc/nixos"
+      "/etc/NetworkManager/system-connections"
       "/var/log"
+      "/var/lib/bluetooth"
       "/var/lib/nixos"
-      "/var/lib/systemd"
+      "/var/lib/systemd/coredump"
     ];
   };
 
