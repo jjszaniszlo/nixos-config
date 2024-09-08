@@ -2,6 +2,7 @@
   imports = [
     inputs.impermanence.nixosModules.impermanence
   ];
+
   programs.fuse.userAllowOther = true;
 
   fileSystems."/persist".neededForBoot = true;

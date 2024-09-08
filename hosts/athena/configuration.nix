@@ -2,6 +2,7 @@
   imports = [
     ../common/global
     ../common/optional/services/delete_root.nix
+    ../common/optional/services/persistence.nix
     ../common/services
     ../common/users/jjszaniszlo
 

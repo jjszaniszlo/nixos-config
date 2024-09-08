@@ -1,26 +1,12 @@
 {
-  pkgs,
   lib,
   config,
   outputs,
   nix-colors,
   ...
 }: {
-  imports = 
-    builtins.attrValues outputs.homeManagerModules
-    ++ nix-colors.homeManagerModules.default;
-
-  nix = {
-    package = lib.mkDefault pkgs.nix;
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "ca-derivations"
-      ];
-      warn-dirty = false;
-    };
-  };
+  imports = [nix-colors.homeManagerModules.default]
+    ++ builtins.attrValues outputs.homeManagerModules;
 
   home = {
     username = lib.mkDefault "jjszaniszlo";
