@@ -4,6 +4,7 @@
     ./devenv.nix
     ./direnv.nix
     ./neovim.nix
+    ./git.nix
   ];
 
   home.packages = with pkgs; [

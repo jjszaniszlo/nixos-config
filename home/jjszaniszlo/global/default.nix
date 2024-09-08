@@ -22,10 +22,7 @@
     ".colorscheme.json".text = builtins.toJSON config.colorScheme;
   };
 
-  programs = {
-    home-manager.enable = true;
-    git.enable = true;
-  };
+  programs.home-manager.enable = true;
 
   systemd.user.startServices = "sd-switch";
 }

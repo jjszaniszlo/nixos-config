@@ -1,6 +1,9 @@
 {inputs, ...} : {
   imports = [
     ../common/global
+    ../common/optional/desktop/sway.nix
+    ../common/optional/desktop/common/default.nix
+    ../common/optional/services/coolercontrol.nix
     ../common/optional/services/delete_root.nix
     ../common/optional/services/persistence.nix
     ../common/services
