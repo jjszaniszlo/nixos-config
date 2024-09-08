@@ -2,15 +2,13 @@
   pkgs,
   lib,
   config,
-  inputs,
   outputs,
   nix-colors,
   ...
 }: {
   imports = 
     builtins.attrValues outputs.homeManagerModules
-    ++ nix-colors.homeManagerModules.default
-    ++ inputs.impermanence.nixosModules.home-manager.impermanence;
+    ++ nix-colors.homeManagerModules.default;
 
   nix = {
     package = lib.mkDefault pkgs.nix;
@@ -32,27 +30,8 @@
     sessionVariables = lib.mkDefault {
       FLAKE = lib.mkDefault "$HOME/.nixos-config";
     };
-
-    persistence= {
-      "/persist/${config.home.homeDirectory}"  = {
-        defaultDirectoryMethod = "symlink";
-        directories = [
-          "Pictures"
-          "Videos"
-          "Documents"
-          "Downloads"
-          "Development"
-          ".ssh"
-          ".local/bin"
-          ".local/share/Steam"
-          ".local/share/nix"
-        ];
-        allowOther = true;
-      };
-    };
   };
 
-  colorScheme.mode = lib.mkOverride 1499 "dark";
   home.file = {
     ".colorscheme.json".text = builtins.toJSON config.colorScheme;
   };

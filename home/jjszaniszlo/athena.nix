@@ -1,6 +1,7 @@
 {pkgs, nix-colors, ...}: {
   imports = [
     ./global
+    ./global/persistence.nix
     ./packages/cli
   ];
 
