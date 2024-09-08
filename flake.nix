@@ -87,12 +87,13 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/athena/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jjszaniszlo = import ./home/jjszaniszlo/athena.nix;
-            extraSpecialArgs = { inherit inputs outputs nix-colors; };
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.jjszaniszlo = import ./home/jjszaniszlo/athena.nix;
+              extraSpecialArgs = { inherit inputs outputs nix-colors; };
+            };
           }
         ];
       };
