@@ -1,4 +1,4 @@
-{outputs, ...}: {
+{inputs, outputs, ...}: {
   imports = [
     ./services
     ./home-manager.nix
@@ -8,5 +8,6 @@
     ./sops.nix
     ./zsh.nix
   ]
+  ++ [inputs.home-manager.nixosModules.home-manager]
   ++ (builtins.attrValues outputs.nixosModules);
 }

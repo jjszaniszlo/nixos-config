@@ -10,6 +10,8 @@
       "desktoppr"
       "discord"
 
+      "godot-mono"
+
       "steam"
 
       "notion-enhanced"
