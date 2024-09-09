@@ -1,6 +1,7 @@
 {inputs, ...} : {
   imports = [
     ../common/global
+    ../common/global/sops.nix
     ../common/optional/desktop/dm/sddm.nix
     ../common/optional/desktop/sway.nix
     ../common/optional/desktop/common/default.nix
