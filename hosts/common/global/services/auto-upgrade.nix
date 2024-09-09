@@ -4,16 +4,14 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   inherit (config.networking) hostName;
   isClean = inputs.self ? rev;
-in
-{
+in {
   system.autoUpgrade = {
     enable = isClean;
     dates = "hourly";
-    flags = [ "--refresh" ];
+    flags = ["--refresh"];
     flake = "git://github.com/EmergentMind/nix-config?ref=release-${hostName}";
   };
 

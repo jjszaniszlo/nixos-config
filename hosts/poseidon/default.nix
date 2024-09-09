@@ -1,7 +1,9 @@
 {...}: {
   imports = [
+    ../common/darwin/desktop
+    ../common/darwin/features/homebrew.nix
+    ../common/darwin/system
     ../common/global/darwin.nix
-    ../common/optional/darwin
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./auto-upgrade.nix ];
+  imports = [./auto-upgrade.nix];
 }

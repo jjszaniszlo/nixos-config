@@ -1,4 +1,8 @@
-{pkgs, nix-colors, ...}: {
+{
+  pkgs,
+  nix-colors,
+  ...
+}: {
   imports = [];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
