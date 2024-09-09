@@ -2,6 +2,7 @@
   imports = [
     ./global
     ./global/persistence.nix
+    ./packages/fonts
     ./packages/cli
     ./packages/desktop/sway
     ./packages/programs
