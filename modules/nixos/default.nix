@@ -1,1 +1,3 @@
-{}
+{
+  userdefs = import ./userdef.nix;
+}
