@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   services.spacebar = {
     enable = true;
-    package = pkgs.spacebar;
+    package = pkgs.master.spacebar;
     config = {
       position = "top";
       height = 35;
@@ -38,7 +38,4 @@
       right_shell_command = "whoami";
     };
   };
-  services.spacebar.config.debug_output = "on";
-  launchd.user.agents.spacebar.serviceConfig.StandardErrorPath = "/tmp/spacebar.err.log";
-  launchd.user.agents.spacebar.serviceConfig.StandardOutPath = "/tmp/spacebar.out.log";
 }
