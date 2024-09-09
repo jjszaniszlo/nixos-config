@@ -6,7 +6,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence/create-persistent-storage-dirs";
     nix-colors.url = "github:misterio77/nix-colors";
-    nixpkgs-master.url ="github:nixos/nixpkgs/master"; 
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default";
@@ -86,7 +86,7 @@
       # main desktop (use home manager as nixos module for impermanence)
       athena = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/athena/configuration.nix];
+        modules = [./hosts/athena];
       };
     };
 
@@ -95,7 +95,7 @@
       poseidon = lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/poseidon/configuration.nix];
+        modules = [./hosts/poseidon];
       };
     };
 
