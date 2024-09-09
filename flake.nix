@@ -86,28 +86,8 @@
       # main desktop (use home manager as nixos module for impermanence)
       athena = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/athena/configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.jjszaniszlo = import ./home/jjszaniszlo/athena.nix;
-              extraSpecialArgs = { inherit inputs outputs nix-colors; };
-            };
-          }
-        ];
+        modules = [./hosts/athena/configuration.nix];
       };
-      # raspberry pi 4
-      # hera = lib.nixosSystem {
-      #   specialArgs = {inherit inputs outputs;};
-      #   modules = [./hosts/hera/configuration.nix];
-      # };
-      # m1-mbp 16"
-      # hermes = lib.nixosSystem {
-      #   specialArgs = {inherit inputs outputs;};
-      #   modules = [./hosts/hermes/configuration.nix];
-      # };
     };
 
     darwinConfigurations = {
@@ -124,20 +104,13 @@
       "jjszaniszlo@athena" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs nix-colors;};
-        modules = [./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix];
+        modules = [./home/jjszaniszlo/athena.nix];
       };
       # 16" mbp m1 pro home
       "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
         extraSpecialArgs = {inherit inputs outputs nix-colors;};
-        modules = [./home/jjszaniszlo/poseidon.nix ./home/jjszaniszlo/nixpkgs.nix];
-      };
-
-      # 16" mbp m1 pro home (NixOS)
-      "jjszaniszlo@hermes" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.aarch64-linux;
-        extraSpecialArgs = {inherit inputs outputs nix-colors;};
-        modules = [./home/jjszaniszlo/hermes.nix ./home/jjszaniszlo/nixpkgs.nix];
+        modules = [./home/jjszaniszlo/poseidon.nix];
       };
     };
   };

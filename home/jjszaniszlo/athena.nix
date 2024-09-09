@@ -1,12 +1,5 @@
 {pkgs, nix-colors, ...}: {
-  imports = [
-    ./global
-    ./global/persistence.nix
-    ./packages/fonts
-    ./packages/cli
-    ./packages/desktop/sway
-    ./packages/programs
-  ];
+  imports = [];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
   colorScheme = nix-colors.colorSchemes.kanagawa;

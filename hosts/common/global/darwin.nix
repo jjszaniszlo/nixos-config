@@ -1,9 +1,6 @@
 _: {
   imports = [
-    ./locale.nix
     ./nix.nix
-    ./services
-    ./sops.nix
     ./zsh.nix
   ];
 }
