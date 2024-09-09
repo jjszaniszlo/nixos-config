@@ -98,15 +98,15 @@
         ];
       };
       # raspberry pi 4
-      hera = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/hera/configuration.nix];
-      };
+      # hera = lib.nixosSystem {
+      #   specialArgs = {inherit inputs outputs;};
+      #   modules = [./hosts/hera/configuration.nix];
+      # };
       # m1-mbp 16"
-      hermes = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/hermes/configuration.nix];
-      };
+      # hermes = lib.nixosSystem {
+      #   specialArgs = {inherit inputs outputs;};
+      #   modules = [./hosts/hermes/configuration.nix];
+      # };
     };
 
     darwinConfigurations = {

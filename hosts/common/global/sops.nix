@@ -1,20 +1,11 @@
-{inputs, config, ...}: {
-  imports = [
-    inputs.sops-nix.nixosModules.sops
-  ];
+{inputs, config, ...}: let
+  isEd25519 = k: k.type == "ed25519";
+  getKeyPath = k: k.path;
+  keys = builtins.filter isEd25519 config.services.openssh.hostKeys;
+in {
+  imports = [inputs.sops-nix.nixosModules.sops];
 
   sops = {
-    defaultSopsFile = ../secrets.yaml;
-    validateSopsFiles = false;
-
-    age = {
-      sshKeyPaths = [
-        "/etc/ssh/ssh_host_ed25519_key"
-      ];
-      keyFile = "/var/lib/sops-nix/key.txt";
-      generateKey = true;
-    };
-    secrets = {};
+    age.sshKeyPaths = map getKeyPath keys;
   };
-
 }
