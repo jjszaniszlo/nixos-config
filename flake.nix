@@ -72,6 +72,7 @@
           config.allowUnfree = true;
         }
     );
+    vars = import ./vars { inherit inputs lib; };
   in {
     inherit lib;
     nixosModules = import ./modules/nixos;
@@ -85,7 +86,7 @@
     nixosConfigurations = {
       # main desktop (use home manager as nixos module for impermanence)
       athena = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs vars outputs;};
         modules = [./hosts/athena];
       };
     };
@@ -94,7 +95,7 @@
       # 16" mbp m1-pro
       poseidon = lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs vars outputs;};
         modules = [./hosts/poseidon];
       };
     };

@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   ...
 }: let
   inherit (lib) mkOption types;
@@ -8,7 +7,7 @@ in {
   options.userdefs = mkOption { 
     type = (types.listOf 
       (types.submodule {
-        username = mkOption {
+        userName = mkOption {
           type = types.str;
           example = "username";
         };
@@ -23,13 +22,5 @@ in {
       })
     );
     default = [];
-  };
-  config = {
-    assertions = [
-      {
-        assertion = (lib.length config.userdefs) != 0;
-        message = "There must be atleast one user!";
-      }
-    ];
   };
 }
