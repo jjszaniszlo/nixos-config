@@ -80,6 +80,7 @@
     overlays = import ./overlays {inherit inputs outputs;};
 
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
 
     nixosConfigurations = {
       # main desktop (use home manager as nixos module for impermanence)

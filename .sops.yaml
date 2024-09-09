@@ -1,8 +1,8 @@
 keys:
   - &users:
-    - &jjszaniszlo age1hn6n2s09yctejlxaa3nkzcw35ylgwrrj5urj025akyqkgfn62ylqprxns8
+    - &jjszaniszlo age10nxp0x73psf4nxv78xyf8vzg62lanyzzmpt7r8vx7ru9erg2cecss5k396
   - &hosts:
-    - &athena age15frld9vk6kv84mkcmp9jl292jljvmsuuwat6n3rzx5m4w9zn6cfsd590dh
+    - &athena age1nj8hzsqrsmqvcc95xjrs9eweem2c5rvg2w0lzgn85ehu8ku5yctszn7833
 
 creation_rules:
   - path_regex: hosts/common/secrets.ya?ml$
