@@ -6,6 +6,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence/create-persistent-storage-dirs";
     nix-colors.url = "github:misterio77/nix-colors";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -88,6 +89,11 @@
       athena = lib.nixosSystem {
         specialArgs = {inherit inputs vars outputs;};
         modules = [./hosts/athena];
+      };
+      # wsl
+      gelos = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/gelos];
       };
     };
 
