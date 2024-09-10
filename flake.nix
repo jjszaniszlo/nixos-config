@@ -58,13 +58,14 @@
     self,
     nixpkgs,
     systems,
-    nix-darwin,
-    home-manager,
     nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib // nix-darwin.lib;
+    inherit (nixpkgs) lib;
+
+    custom-lib = import ./lib {inherit lib;};
+    
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
       system:
@@ -73,7 +74,13 @@
           config.allowUnfree = true;
         }
     );
-    vars = import ./vars { inherit inputs lib; };
+
+    specialArgs = {
+      inherit
+        inputs
+        outputs
+        custom-lib;
+    };
   in {
     inherit lib;
     nixosModules = import ./modules/nixos;
@@ -87,12 +94,12 @@
     nixosConfigurations = {
       # main desktop (use home manager as nixos module for impermanence)
       athena = lib.nixosSystem {
-        specialArgs = {inherit inputs vars outputs;};
+        inherit specialArgs;
         modules = [./hosts/athena];
       };
       # wsl
       gelos = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        inherit specialArgs;
         modules = [./hosts/gelos];
       };
     };
@@ -101,7 +108,7 @@
       # 16" mbp m1-pro
       poseidon = lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = {inherit inputs vars outputs;};
+        inherit specialArgs;
         modules = [./hosts/poseidon];
       };
     };
@@ -110,13 +117,13 @@
       # main desktop home
       "jjszaniszlo@athena" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs nix-colors;};
+        extraSpecialArgs = specialArgs // {inherit nix-colors;};
         modules = [./home/jjszaniszlo/athena.nix];
       };
       # 16" mbp m1 pro home
       "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
-        extraSpecialArgs = {inherit inputs outputs nix-colors;};
+        extraSpecialArgs = specialArgs // {inherit nix-colors;};
         modules = [./home/jjszaniszlo/poseidon.nix];
       };
     };
