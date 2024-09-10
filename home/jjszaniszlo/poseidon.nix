@@ -1,7 +1,7 @@
 {config, lib, ...}: {
   imports = [
     ./global
-    ./packages/cli
+    ./features/cli
   ];
 
   home.homeDirectory = lib.mkForce "/Users/${config.home.username}";
