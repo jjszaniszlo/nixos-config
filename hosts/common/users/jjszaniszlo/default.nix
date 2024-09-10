@@ -3,6 +3,8 @@
     isNormalUser = true;
     shell = pkgs.zsh;
 
+    extraGroups = [ "wheel" ];
+
     packages = [ pkgs.home-manager ];
   };
 

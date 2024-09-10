@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ../common/global
@@ -28,8 +28,6 @@
 
   environment.etc.hosts.enable = false;
   environment.etc."resolv.conf".enable = false;
-
-  networking.dhcpcd.enable = false;
 
   users.users.root = {
     extraGroups = [ "root" ];
