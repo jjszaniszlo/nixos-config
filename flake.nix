@@ -62,7 +62,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    inherit (nixpkgs) lib;
+    lib = nixpkgs.lib // inputs.home-manager.lib // inputs.nix-darwin.lib;
 
     custom-lib = import ./lib {inherit lib;};
     

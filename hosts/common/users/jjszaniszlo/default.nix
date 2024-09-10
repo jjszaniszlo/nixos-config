@@ -1,12 +1,8 @@
-{pkgs, config, custom-lib, ...}: {
+{...}: {
+  imports = [./base.nix];
   users.users.jjszaniszlo = {
     isNormalUser = true;
-    shell = pkgs.zsh;
-
+    home = "/home/jjszaniszlo";
     extraGroups = [ "wheel" ];
-
-    packages = [ pkgs.home-manager ];
   };
-
-  home-manager.users.jjszaniszlo = custom-lib.relativeToRoot "home/jjszaniszlo/${config.networking.hostName}.nix";
 }
