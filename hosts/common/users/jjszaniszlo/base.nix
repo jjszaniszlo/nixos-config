@@ -5,5 +5,7 @@
     packages = [ pkgs.home-manager ];
   };
 
-  home-manager.users.jjszaniszlo = custom-lib.relativeToRoot "home/jjszaniszlo/${config.networking.hostName}.nix";
+  home-manager.users.jjszaniszlo = import (
+    custom-lib.relativeToRoot "home/jjszaniszlo/${config.networking.hostName}.nix"
+  );
 }

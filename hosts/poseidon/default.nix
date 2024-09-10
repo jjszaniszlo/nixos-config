@@ -7,6 +7,8 @@
     ../common/users/jjszaniszlo/darwin.nix
   ];
 
+  networking.hostName = "poseidon";
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 4;
 }
