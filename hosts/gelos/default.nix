@@ -5,6 +5,8 @@
     ../common/users/jjszaniszlo
     inputs.nixos-wsl.nixosModules.default
   ];
+  
+  networking.hostName = "gelos";
 
   wsl = {
     enable = true;
