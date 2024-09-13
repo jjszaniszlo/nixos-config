@@ -6,9 +6,14 @@
       content = {
         type = "gpt";
         partitions = {
-          ESP = {
-            start = "1MiB";
-            end = "1G";
+          boot = {
+            name = "boot";
+            size = "1M";
+            type = "EF02";
+          };
+          esp = {
+            name = "ESP";
+            size = "1G";
             type = "EF00";
             content = {
               type = "filesystem";
@@ -17,17 +22,29 @@
             };
           };
           swap = {
-            start = "1G";
-            end = "33G";
+            size = "48G";
             content = {
               type = "swap";
               resumeDevice = true;
-              randomEncryption = true;
             };
           };
           root = {
-            start = "33G";
-            end = "100%";
+            name = "root";
+            size = "100%";
+            content = {
+              type = "lvm_pv";
+              vg = "root_vg";
+            };
+          };
+        };
+      };
+    };
+    lvm_vg = {
+      root_vg = {
+        type = "lvm_vg";
+        lvs = {
+          root = {
+            size = "100%FREE";
             content = {
               type = "btrfs";
               extraArgs = ["-f"];
