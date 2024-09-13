@@ -8,6 +8,7 @@
     registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
+
     settings = {
       connect-timeout = 5;
       log-lines = 25;
@@ -15,6 +16,8 @@
       max-free = 1000000000; # 1GB
 
       auto-optimise-store = true;
+
+      trusted-users = [ "root" "jjszaniszlo" ];
 
       experimental-features = [
         "nix-command"
