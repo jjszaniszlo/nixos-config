@@ -92,7 +92,7 @@
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
 
     nixosConfigurations = {
-      # main desktop (use home manager as nixos module for impermanence)
+      # main desktop 
       athena = lib.nixosSystem {
         inherit specialArgs;
         modules = [./hosts/athena];
@@ -113,19 +113,20 @@
       };
     };
 
-    homeConfigurations = {
-      # main desktop home
-      "jjszaniszlo@athena" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = specialArgs // {inherit nix-colors;};
-        modules = [./home/jjszaniszlo/athena.nix];
-      };
-      # 16" mbp m1 pro home
-      "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor.aarch64-darwin;
-        extraSpecialArgs = specialArgs // {inherit nix-colors;};
-        modules = [./home/jjszaniszlo/poseidon.nix];
-      };
-    };
+    # No longer user home-manager standalone
+    # homeConfigurations = {
+    #   # main desktop home
+    #   "jjszaniszlo@athena" = lib.homeManagerConfiguration {
+    #     pkgs = pkgsFor.x86_64-linux;
+    #     extraSpecialArgs = {inherit inputs outputs nix-colors;};
+    #     modules = [./home/jjszaniszlo/athena.nix];
+    #   };
+    #   # 16" mbp m1 pro home
+    #   "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
+    #     pkgs = pkgsFor.aarch64-darwin;
+    #     extraSpecialArgs = {inherit inputs outputs nix-colors;};
+    #     modules = [./home/jjszaniszlo/poseidon.nix];
+    #   };
+    # };
   };
 }

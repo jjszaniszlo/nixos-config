@@ -3,7 +3,10 @@
   nix-colors,
   ...
 }: {
-  imports = [];
+  imports = [
+    ./global
+    ./features/cli
+  ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
   colorScheme = nix-colors.colorSchemes.kanagawa;
