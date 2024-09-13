@@ -58,7 +58,6 @@
     self,
     nixpkgs,
     systems,
-    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
