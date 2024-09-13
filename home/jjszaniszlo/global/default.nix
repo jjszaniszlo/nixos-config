@@ -1,13 +1,13 @@
 {
   lib,
   config,
-  inputs,
+  nix-colors,
   outputs,
   ...
 }: {
-  imports = 
-    [builtins.attrValues outputs.homeManagerModules]
-  ++ [inputs.nix-colors.homeManagerModules.default];
+  imports = (builtins.attrValues outputs.homeManagerModules)
+    ++ [nix-colors.homeManagerModule];
+
 
   home = {
     username = lib.mkDefault "jjszaniszlo";

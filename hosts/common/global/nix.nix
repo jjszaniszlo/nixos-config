@@ -3,12 +3,10 @@
   config,
   lib,
   ...
-}: {
+}: let
+  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+in {
   nix = {
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-
     settings = {
       connect-timeout = 5;
       log-lines = 25;
@@ -17,18 +15,30 @@
 
       auto-optimise-store = true;
 
-      trusted-users = [ "root" "jjszaniszlo" ];
+      trusted-users = [ "root" "@wheel" ];
 
       experimental-features = [
         "nix-command"
         "flakes"
       ];
+
       warn-dirty = false;
+
+      system-features = [
+        "kvm"
+        "big-parallel"
+        "nixos-test"
+      ];
+
+      flake-registry = "";
     };
 
     gc = {
       automatic = true;
       options = "--delete-older-than 10d";
     };
+
+    registry = lib.mkDefault (lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs);
+    nixPath = lib.mkDefault (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs);
   };
 }

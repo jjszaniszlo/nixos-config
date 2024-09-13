@@ -57,9 +57,10 @@
   outputs = {
     self,
     nixpkgs,
+    nix-colors,
     systems,
     ...
-  } @ inputs: let
+  } @inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // inputs.home-manager.lib // inputs.nix-darwin.lib;
 
@@ -78,6 +79,7 @@
       inherit
         inputs
         outputs
+        nix-colors
         custom-lib;
     };
   in {

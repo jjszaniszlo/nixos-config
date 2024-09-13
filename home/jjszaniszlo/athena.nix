@@ -1,5 +1,5 @@
 {
-  inputs,
+  nix-colors,
   pkgs,
   ...
 }: {
@@ -9,7 +9,7 @@
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
-  colorScheme = inputs.nix-colors.colorSchemes.kanagawa;
+  colorScheme = nix-colors.colorSchemes.kanagawa;
 
   monitors = [
     {
