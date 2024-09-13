@@ -8,7 +8,7 @@
       ./hardware-configuration.nix
     ]
     ++ [inputs.disko.nixosModules.default]
-    ++ [(import ./disko.nix {device = "/dev/nvme0n1";})];
+    ++ [(import ../common/disks/standard-disk-config.nix {device = "/dev/nvme0n1";})];
 
   users.users.jjszaniszlo.initialPassword = "1234";
 
