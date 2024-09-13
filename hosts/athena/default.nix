@@ -2,8 +2,8 @@
   imports =
     [
       ../common/global
-      ../common/services
       ../common/users/jjszaniszlo
+      ../common/optional/services
 
       ./hardware-configuration.nix
     ]
