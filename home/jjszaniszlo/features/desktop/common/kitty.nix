@@ -2,7 +2,6 @@
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
-    package = null;
     font = {
       name = "VictorMono Nerd Font";
       package = pkgs.nerdfonts.override {fonts = ["VictorMono"];};
