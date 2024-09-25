@@ -21,8 +21,8 @@ in {
   };
 
   # Adds pkgs.stable == inputs.nixpkgs-stable.legacyPackages.${pkgs.system}
-  stable = final: _: {
-    stable = inputs.nixpkgs-stable.legacyPackages.${final.system};
+  unstable = final: _: {
+    unstable = inputs.nixpkgs-unstable.legacyPackages.${final.system};
   };
 
   master = final: _: {

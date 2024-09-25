@@ -1,14 +1,14 @@
 {
   description = "Your new nix config";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
+  # nixConfig = {
+  #   extra-substituters = [
+  #     "https://nix-community.cachix.org"
+  #   ];
+  #   extra-trusted-public-keys = [
+  #     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  #   ];
+  # };
 
   inputs = {
     # Nixpkgs
@@ -17,8 +17,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default";
 
     apple-silicon-support = {
@@ -122,21 +122,5 @@
         modules = [./hosts/poseidon];
       };
     };
-
-    # No longer user home-manager standalone
-    # homeConfigurations = {
-    #   # main desktop home
-    #   "jjszaniszlo@athena" = lib.homeManagerConfiguration {
-    #     pkgs = pkgsFor.x86_64-linux;
-    #     extraSpecialArgs = {inherit inputs outputs nix-colors;};
-    #     modules = [./home/jjszaniszlo/athena.nix];
-    #   };
-    #   # 16" mbp m1 pro home
-    #   "jjszaniszlo@poseidon" = lib.homeManagerConfiguration {
-    #     pkgs = pkgsFor.aarch64-darwin;
-    #     extraSpecialArgs = {inherit inputs outputs nix-colors;};
-    #     modules = [./home/jjszaniszlo/poseidon.nix];
-    #   };
-    # };
   };
 }
