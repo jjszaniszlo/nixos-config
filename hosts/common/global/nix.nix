@@ -15,7 +15,7 @@ in {
 
       auto-optimise-store = true;
 
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [ "root" "jjszaniszlo" "@wheel" ];
 
       experimental-features = [
         "nix-command"
