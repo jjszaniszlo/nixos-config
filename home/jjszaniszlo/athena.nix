@@ -7,6 +7,7 @@
     ./global
     ./features/cli
     ./features/desktop/wm/sway
+    ./features/gaming
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;

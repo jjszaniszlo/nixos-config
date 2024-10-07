@@ -6,6 +6,7 @@
       ../common/optional/services
 
       ../common/optional/features/desktop
+      ../common/optional/features/gaming
 
       ./hardware-configuration.nix
     ]
