@@ -6,6 +6,7 @@
   imports = [
     ./global
     ./features/cli
+    ./features/desktop/common
   ];
 
   wallpaper = pkgs.wallpapers.rx7-blue-dark;

@@ -9,6 +9,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     apple-silicon-support = {
       url = "github:tpwrules/nixos-apple-silicon/main";

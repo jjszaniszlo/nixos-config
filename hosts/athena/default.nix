@@ -5,6 +5,8 @@
       ../common/users/jjszaniszlo
       ../common/optional/services
 
+      ../common/optional/features/desktop
+
       ./hardware-configuration.nix
     ]
     ++ [inputs.disko.nixosModules.default]
