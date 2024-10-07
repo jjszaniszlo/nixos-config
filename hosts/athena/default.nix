@@ -12,8 +12,6 @@
 
   users.users.jjszaniszlo.initialPassword = "1234";
 
-  display-manager = "sddm";
-
   networking.hostName = "athena";
   system.stateVersion = "24.05";
 }

@@ -20,15 +20,6 @@ in {
       inputs;
   };
 
-  # Adds pkgs.stable == inputs.nixpkgs-stable.legacyPackages.${pkgs.system}
-  unstable = final: _: {
-    unstable = inputs.nixpkgs-unstable.legacyPackages.${final.system};
-  };
-
-  master = final: _: {
-    master = inputs.nixpkgs-master.legacyPackages.${final.system};
-  };
-
   modifications = final: prev: {};
 
   additions = final: prev: import ../pkgs {pkgs = final;};
