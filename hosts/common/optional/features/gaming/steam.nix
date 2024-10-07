@@ -1,5 +1,4 @@
-{config, pkgs, ...}: let
-  monitor = (builtins.elemAt config.home-manager.users.jjszaniszlo.monitors 0);
+{pkgs, ...}: let
   steam-with-pkgs = pkgs.steam.override {
     extraPkgs = pkgs:
       with pkgs; [
@@ -50,14 +49,13 @@ in {
     gamescopeSession = {
       enable = true;
       args = [
-      "--output-width ${toString monitor.width}"
-      "--output-height ${toString monitor.height}"
-      "--framerate-limit ${toString monitor.refresh-rate}"
-      "--prefer-output ${monitor.name}"
-      "--adaptive-sync"
-      "--expose-wayland"
-      "--hdr-enabled"
-      "--steam"
+        "--output-width 3840"
+        "--output-height 2160"
+        "--framerate-limit 120"
+        "--prefer-output DP-1"
+        "--adaptive-sync"
+        "--expose-wayland"
+        "--steam"
       ];
     };
   };
