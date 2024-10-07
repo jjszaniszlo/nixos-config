@@ -1,5 +1,3 @@
 _: {
-  imports = [
-    # ./steam.nix
-  ];
+  home.file.".local/bin/steamos-session-select".text = "steam -shutdown";
 }
