@@ -6,8 +6,6 @@
   imports = [
     ./global
     ./features/cli
-    ./features/desktop/common
-    ./features/desktop/wayland
     ./features/desktop/wm/sway
   ];
 

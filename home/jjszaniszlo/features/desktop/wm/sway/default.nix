@@ -5,8 +5,8 @@
   ...
 }: {
   imports = [
-    ../common/wayland
-    ../common
+    ../../common
+    ../../wayland
   ];
 
   home.sessionVariables = {
