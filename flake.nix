@@ -109,5 +109,15 @@
         modules = [./hosts/poseidon];
       };
     };
+
+    homeConfigurations = {
+      "jjszaniszlo@athena" = lib.homeManagerConfiguration {
+        modules = [ ./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs nix-colors custom-lib;
+        };
+      };
+    };
   };
 }
