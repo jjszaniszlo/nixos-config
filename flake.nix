@@ -3,6 +3,7 @@
 
   inputs = {
     # Nixpkgs
+    godot.url = "github:Quoteme/nixos-godot-bin";
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence/create-persistent-storage-dirs";
     nix-colors.url = "github:misterio77/nix-colors";
