@@ -3,10 +3,11 @@
     [
       ../common/global
       ../common/users/jjszaniszlo
-      ../common/optional/services
 
       ../common/optional/features/desktop
       ../common/optional/features/gaming
+      ../common/optional/services
+      ../common/optional/utils
 
       ./hardware-configuration.nix
     ]
