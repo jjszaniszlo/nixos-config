@@ -7,7 +7,6 @@
   
   services.swayosd.enable = true;
 
-  xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
     wl-clipboard
   ];

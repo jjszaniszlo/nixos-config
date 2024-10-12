@@ -1,4 +1,8 @@
-_: {
+{inputs, pkgs, ...}: {
+  home.packages = [
+    inputs.zen-browser.packages."${pkgs.system}".default
+  ];
+
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["zen.desktop"];
     "text/xml" = ["zen.desktop"];

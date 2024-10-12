@@ -18,8 +18,12 @@
   wayland.windowManager.sway = {
     enable = true;
     xwayland = true;
-    systemd.enable = true;
-    package = null;
+
+    extraConfig = ''
+      # announce a running sway session to systemd
+      exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+      exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    '';
 
     config = let
       super = "Mod4";
@@ -110,12 +114,4 @@
       window.titlebar = false;
     };
   };
-
-  xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
-    [screencast]
-    output_name=
-    max_fps=30
-    chooser_cmd=${pkgs.slurp}/bin/slurp -f %o -or
-    chooser_type=simple
-  '';
 }

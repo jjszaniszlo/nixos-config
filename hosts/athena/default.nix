@@ -4,7 +4,7 @@
       ../common/global
       ../common/users/jjszaniszlo
 
-      ../common/optional/features/desktop
+      ../common/optional/features/desktop/desktop-environments/gnome.nix
       ../common/optional/features/development
       ../common/optional/features/gaming
       ../common/optional/services
