@@ -94,7 +94,7 @@
         "${super}+Shift+0" = "move container to workspace 10";
 
         # toggle floating
-        "${alt}+f" = "floating toggle";
+        "${alt}+Shift+Space" = "floating toggle";
 
         # exit sway
         "${super}+m" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";

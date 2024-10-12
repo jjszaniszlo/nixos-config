@@ -4,5 +4,6 @@ _: {
     ./kitty.nix
     ./gtk.nix
     ./qt.nix
+    ./zen.nix
   ];
 }

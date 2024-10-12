@@ -8,6 +8,7 @@
   imports = (builtins.attrValues outputs.homeManagerModules)
     ++ [nix-colors.homeManagerModule];
 
+  systemd.user.startServices = "sd-switch";
 
   home = {
     username = lib.mkDefault "jjszaniszlo";

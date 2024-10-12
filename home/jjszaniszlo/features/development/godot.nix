@@ -1,5 +1,5 @@
 {pkgs, inputs, ...}: {
-  home.packages = [
-    inputs.godot.packages.${pkgs.system}.godotMono
+  home.packages = with pkgs; [
+
   ];
 }
