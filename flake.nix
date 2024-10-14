@@ -1,25 +1,16 @@
 {
   description = "Your new nix config";
 
-  # nixConfig = {
-  #   extra-substituters = [
-  #     "https://nix-community.cachix.org"
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  #   ];
-  # };
-
   inputs = {
     # Nixpkgs
+    godot.url = "github:Quoteme/nixos-godot-bin";
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence/create-persistent-storage-dirs";
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     apple-silicon-support = {
       url = "github:tpwrules/nixos-apple-silicon/main";
@@ -37,7 +28,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -116,6 +107,16 @@
         system = "aarch64-darwin";
         inherit specialArgs;
         modules = [./hosts/poseidon];
+      };
+    };
+
+    homeConfigurations = {
+      "jjszaniszlo@athena" = lib.homeManagerConfiguration {
+        modules = [ ./home/jjszaniszlo/athena.nix ./home/jjszaniszlo/nixpkgs.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs nix-colors custom-lib;
+        };
       };
     };
   };

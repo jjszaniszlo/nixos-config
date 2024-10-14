@@ -5,6 +5,7 @@
       nix
       home-manager
       git
+      lazygit
 
       sops
       ssh-to-age
