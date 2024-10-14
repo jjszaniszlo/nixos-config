@@ -32,5 +32,8 @@
       window_placement = "second_child";
       window_topmost = "on";
     };
+    extraConfig = ''
+      yabai -m rule --add app='System Preferences' manage=off
+    '';
   };
 }
