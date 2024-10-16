@@ -12,6 +12,8 @@
   wallpaper = pkgs.wallpapers.rx7-blue-dark;
   colorScheme = nix-colors.colorSchemes.kanagawa;
 
+  targets.genericLinux.enable = true;
+
   monitors = [
     {
       name = "DP-1";

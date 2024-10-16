@@ -2,16 +2,17 @@
   outputs,
   lib,
   inputs,
+  pkgs,
   ...
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in {
   nix = {
+    package = pkgs.nix;
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
-        "ca-derivations"
       ];
       warn-dirty = false;
       flake-registry = ""; # Disable global flake registry

@@ -17,6 +17,7 @@
     sessionPath = lib.mkDefault ["$HOME/.local/bin"];
     sessionVariables = lib.mkDefault {
       FLAKE = lib.mkDefault "$HOME/.nixos-config";
+      EDITOR = "nvim";
     };
   };
 

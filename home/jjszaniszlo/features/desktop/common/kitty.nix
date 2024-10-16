@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.kitty = {
     enable = true;
+    package = pkgs.emptyDirectory;
     shellIntegration.enableZshIntegration = true;
     font = {
       name = "VictorMono Nerd Font";
@@ -10,11 +11,11 @@
       # font_family = "VictorMono Nerd Font";
       font_size = "20";
 
-      background_image = "${pkgs.wallpapers.sci-fi-city}";
+      background_image = "${pkgs.wallpapers.rx7-blue-dark}";
       background_image_layout = "scaled";
 
       window_margin_width = "10";
-      single_window_margin_width = "0";
+      single_window_margin_width = "10";
 
       background_tint = "0.95";
       background_tint_gaps = "-10";
