@@ -91,6 +91,11 @@
         inherit specialArgs;
         modules = [./hosts/athena];
       };
+      # server 
+      hestia = lib.nixosSystem {
+        inherit specialArgs;
+        modules = [./hosts/hestia];
+      };
       # wsl
       gelos = lib.nixosSystem {
         inherit specialArgs;
