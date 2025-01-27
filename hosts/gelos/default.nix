@@ -19,9 +19,6 @@
 
   environment.systemPackages = with pkgs; [
     wget
-    direnv
-    devenv
-    ripgrep
   ];
   
   programs.nix-ld = {
@@ -40,7 +37,6 @@
   environment.etc."resolv.conf".enable = false;
 
   users.users.root = {
-    isSystemUser = true;
     extraGroups = [ "root" ];
   };
 

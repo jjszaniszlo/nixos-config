@@ -1,7 +1,6 @@
 {inputs, outputs, ...}: {
   imports = [
     ./services
-    ./home-manager.nix
     ./locale.nix
     ./nix.nix
     ./nixpkgs.nix

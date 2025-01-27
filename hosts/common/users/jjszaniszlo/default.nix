@@ -3,7 +3,7 @@
     isNormalUser = true;
     description = "John Szaniszlo";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" ];
   };
 
   users.users."user".openssh.authorizedKeys.keys = [
