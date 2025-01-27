@@ -19,18 +19,14 @@
 
   environment.systemPackages = with pkgs; [
     wget
+    direnv
+    devenv
+    ripgrep
   ];
   
   programs.nix-ld = {
     enable = true;
     package = pkgs.nix-ld-rs;
-  };
-
-  virtualisation.docker.enable = true;
-
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = [ "nightmare-negotiations-db" ];
   };
 
   environment.etc.hosts.enable = false;

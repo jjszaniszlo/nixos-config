@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   users.users.jjszaniszlo = {
-    isNormalUser = true;
     description = "John Szaniszlo";
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
