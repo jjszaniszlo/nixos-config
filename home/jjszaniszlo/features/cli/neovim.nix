@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    inputs.nixvim.packages.${pkgs.system}.default
   home.packages = with pkgs; [
     # inputs.nixvim.packages.${pkgs.system}.default
     ripgrep

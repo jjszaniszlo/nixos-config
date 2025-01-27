@@ -19,6 +19,9 @@
 
   environment.systemPackages = with pkgs; [
     wget
+    direnv
+    devenv
+    ripgrep
   ];
   
   programs.nix-ld = {
