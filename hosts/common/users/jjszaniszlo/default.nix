@@ -1,11 +1,8 @@
 {pkgs, ...}: {
-  imports = [./base.nix];
-
   users.users.jjszaniszlo = {
     isNormalUser = true;
     description = "John Szaniszlo";
     shell = pkgs.zsh;
-    packages = [ pkgs.home-manager ];
     extraGroups = [ "wheel" "docker" ];
   };
 
