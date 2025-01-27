@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     hardware.url = "github:nixos/nixos-hardware";
+    # impermanence.url = "github:nix-community/impermanence/create-persistent-storage-dirs";
     nix-colors.url = "github:misterio77/nix-colors";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,10 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # alejandra = {
+    #   url = "github:kamadorueda/alejandra/3.0.0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     disko = {
       url = "github:nix-community/disko";

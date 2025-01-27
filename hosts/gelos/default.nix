@@ -26,10 +26,18 @@
     package = pkgs.nix-ld-rs;
   };
 
+  virtualisation.docker.enable = true;
+
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "nightmare-negotiations-db" ];
+  };
+
   environment.etc.hosts.enable = false;
   environment.etc."resolv.conf".enable = false;
 
   users.users.root = {
+    isSystemUser = true;
     extraGroups = [ "root" ];
   };
 

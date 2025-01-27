@@ -1,10 +1,12 @@
-{...}: {
+{pkgs, ...}: {
   imports = [./base.nix];
 
   users.users.jjszaniszlo = {
     isNormalUser = true;
-    home = "/home/jjszaniszlo";
-    extraGroups = [ "wheel" ];
+    description = "John Szaniszlo";
+    shell = pkgs.zsh;
+    packages = [ pkgs.home-manager ];
+    extraGroups = [ "wheel" "docker" ];
   };
 
   users.users."user".openssh.authorizedKeys.keys = [
