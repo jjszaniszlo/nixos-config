@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./global
     ./features/cli
   ];
+  home.stateVersion = "24.05";
 }
