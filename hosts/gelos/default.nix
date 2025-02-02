@@ -2,7 +2,6 @@
 {
   imports = [
     ../common/global
-    ../common/users/jjszaniszlo
     inputs.nixos-wsl.nixosModules.default
   ];
   
@@ -23,6 +22,8 @@
     devenv
     ripgrep
   ];
+
+  programs.zsh.enable = true;
   
   programs.nix-ld = {
     enable = true;
@@ -33,7 +34,15 @@
   environment.etc."resolv.conf".enable = false;
 
   users.users.root = {
+    isSystemUser = true;
     extraGroups = [ "root" ];
+  };
+
+  users.users.jjszaniszlo = {
+    isNormalUser = true;
+    description = "John Szaniszlo";
+    shell = pkgs.zsh;
+    extraGroups = [ "wheel" ];
   };
 
   security.sudo.wheelNeedsPassword = false;
